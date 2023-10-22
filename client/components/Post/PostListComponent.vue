@@ -12,6 +12,7 @@ const { isLoggedIn } = storeToRefs(useUserStore());
 
 const loaded = ref(false);
 let posts = ref<Array<Record<string, string>>>([]);
+let likes = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
 let searchAuthor = ref("");
 
@@ -25,6 +26,17 @@ async function getPosts(author?: string) {
   }
   searchAuthor.value = author ? author : "";
   posts.value = postResults;
+}
+
+async function getLikes(postId: string) {
+  let likeResults;
+  try {
+    likeResults = await fetchy(`/api/posts/${postId}/likes`, "GET");
+  } catch (_) {
+    return;
+  }
+  likes.value.push(likeResults);
+  console.log(likes.value);
 }
 
 function updateEditing(id: string) {
