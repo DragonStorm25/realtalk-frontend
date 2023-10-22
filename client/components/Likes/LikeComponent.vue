@@ -2,6 +2,9 @@
 const props = defineProps(["likes", "dislikes"]);
 </script>
 
-<template></template>
+<template>
+  <p>Likes: {{ props.likes }}</p>
+  <p>Dislikes: {{ props.dislikes }}</p>
+</template>
 
 <style scoped></style>
