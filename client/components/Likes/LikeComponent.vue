@@ -12,6 +12,7 @@ async function getLikes() {
   } catch (_) {
     return;
   }
+  likes.value = likeResults;
 }
 </script>
 
