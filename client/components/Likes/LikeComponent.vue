@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const props = defineProps(["likes", "dislikes"]);
+const props = defineProps(["post_id"]);
 </script>
 
 <template>
-  <p>Likes: {{ props.likes }}</p>
-  <p>Dislikes: {{ props.dislikes }}</p>
+  <p>Likes:</p>
+  <p>Dislikes:</p>
 </template>
 
-<style scoped></style>
+<style scoped>
+p {
+  margin: 0em;
+}
+</style>
