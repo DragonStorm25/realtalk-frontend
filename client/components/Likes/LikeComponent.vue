@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { fetchy } from "../../utils/fetchy";
+import { ref } from "vue";
 
 const props = defineProps(["post_id"]);
+let likes = ref("");
 
 async function getLikes() {
   let likeResults;
