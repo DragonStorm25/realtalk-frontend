@@ -46,6 +46,9 @@ function updateEditing(id: string) {
 onBeforeMount(async () => {
   await getPosts();
   loaded.value = true;
+  for (const post of posts.value) {
+    await getLikes(post._id);
+  }
 });
 </script>
 
