@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps(["likes", "dislikes"]);
+</script>
 
 <template></template>
 
