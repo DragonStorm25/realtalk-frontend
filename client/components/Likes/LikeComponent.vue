@@ -21,12 +21,20 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <p>Likes: {{ likes.likes }}</p>
-  <p>Dislikes: {{ likes.dislikes }}</p>
+  <div class="likes-box">
+    <p>Likes: {{ likes.likes }}</p>
+    <p>Dislikes: {{ likes.dislikes }}</p>
+  </div>
 </template>
 
 <style scoped>
 p {
   margin: 0em;
+}
+
+.likes-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
