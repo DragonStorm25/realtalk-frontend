@@ -18,6 +18,7 @@ async function getLikes() {
 async function likePost() {
   try {
     await fetchy(`/api/posts/${props.post_id}/like`, "PATCH");
+    await getLikes();
   } catch (_) {
     return;
   }
@@ -26,6 +27,7 @@ async function likePost() {
 async function dislikePost() {
   try {
     await fetchy(`/api/posts/${props.post_id}/dislike`, "PATCH");
+    await getLikes();
   } catch (_) {
     return;
   }
