@@ -138,7 +138,7 @@ class Routes {
     if (author) {
       const trust = await Trust.trust(user, _id);
       const karma = await Karma.increaseKarma(author, trust.typeRemoved == TrustType.Mistrust);
-      return { trustInfo: trust, karmaInfo: karma };
+      return { msg: "Trust successfully applied and karma successfully increased!", trustInfo: trust, karmaInfo: karma };
     }
   }
 
@@ -150,7 +150,7 @@ class Routes {
     if (author) {
       const mistrust = await Trust.mistrust(user, _id);
       const karma = await Karma.decreaseKarma(author, mistrust.typeRemoved == TrustType.Trust);
-      return { trustInfo: mistrust, karmaInfo: karma };
+      return { msg: "Mistrust successfully applied and karma successfully decreased!", trustInfo: mistrust, karmaInfo: karma };
     }
   }
 
