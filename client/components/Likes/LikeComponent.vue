@@ -15,6 +15,22 @@ async function getLikes() {
   likes.value = likeResults;
 }
 
+async function likePost() {
+  try {
+    await fetchy(`/api/posts/${props.post_id}/like`, "PATCH");
+  } catch (_) {
+    return;
+  }
+}
+
+async function dislikePost() {
+  try {
+    await fetchy(`/api/posts/${props.post_id}/dislike`, "PATCH");
+  } catch (_) {
+    return;
+  }
+}
+
 onBeforeMount(async () => {
   await getLikes();
 });
