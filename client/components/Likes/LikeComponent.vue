@@ -13,6 +13,7 @@ async function getLikes() {
     return;
   }
   likes.value = likeResults;
+  console.log(likeResults);
 }
 
 onBeforeMount(async () => {
