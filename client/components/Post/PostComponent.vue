@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LikeComponent from "../Likes/LikeComponent.vue";
 import { useUserStore } from "@/stores/user";
 import { formatDate } from "@/utils/formatDate";
 import { storeToRefs } from "pinia";
