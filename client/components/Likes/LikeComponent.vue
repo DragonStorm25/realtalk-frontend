@@ -3,7 +3,7 @@ import { fetchy } from "../../utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 
 const props = defineProps(["post_id"]);
-let likes = ref("");
+let likes = ref({ likes: 0, dislikes: 0 });
 
 async function getLikes() {
   let likeResults;
@@ -13,7 +13,6 @@ async function getLikes() {
     return;
   }
   likes.value = likeResults;
-  console.log(likeResults);
 }
 
 onBeforeMount(async () => {
@@ -22,8 +21,8 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <p>Likes:</p>
-  <p>Dislikes:</p>
+  <p>Likes: {{ likes.likes }}</p>
+  <p>Dislikes: {{ likes.dislikes }}</p>
 </template>
 
 <style scoped>
