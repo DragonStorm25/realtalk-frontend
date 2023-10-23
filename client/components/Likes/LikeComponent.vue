@@ -30,6 +30,7 @@ onBeforeMount(async () => {
 <style scoped>
 p {
   margin: 0em;
+  margin-left: 1em;
 }
 
 .likes-box {
