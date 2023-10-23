@@ -3,45 +3,45 @@ import { fetchy } from "../../utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 
 const props = defineProps(["post_id"]);
-let likes = ref({ likes: 0, dislikes: 0 });
+let trusts = ref({ trusts: 0, mistrusts: 0 });
 
-async function getLikes() {
-  let likeResults;
+async function getTrusts() {
+  let trustResults;
   try {
-    likeResults = await fetchy(`/api/posts/${props.post_id}/likes`, "GET");
+    trustResults = await fetchy(`/api/posts/${props.post_id}/trusts`, "GET");
   } catch (_) {
     return;
   }
-  likes.value = likeResults;
+  trusts.value = trustResults;
 }
 
-async function likePost() {
+async function trustPost() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/like`, "PATCH");
-    await getLikes();
+    await fetchy(`/api/posts/${props.post_id}/trust`, "PATCH");
+    await getTrusts();
   } catch (_) {
     return;
   }
 }
 
-async function dislikePost() {
+async function mistrustPost() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/dislike`, "PATCH");
-    await getLikes();
+    await fetchy(`/api/posts/${props.post_id}/mistrust`, "PATCH");
+    await getTrusts();
   } catch (_) {
     return;
   }
 }
 
 onBeforeMount(async () => {
-  await getLikes();
+  await getTrusts();
 });
 </script>
 
 <template>
-  <div class="likes-box">
-    <button class="pure-button" @click="likePost">Likes: {{ likes.likes }}</button>
-    <button class="pure-button" @click="dislikePost">Dislikes: {{ likes.dislikes }}</button>
+  <div class="trusts-box">
+    <button class="pure-button" @click="trustPost">Trusts: {{ trusts.trusts }}</button>
+    <button class="pure-button" @click="mistrustPost">Mistrusts: {{ trusts.mistrusts }}</button>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ button {
   margin-left: 1em;
 }
 
-.likes-box {
+.trusts-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
