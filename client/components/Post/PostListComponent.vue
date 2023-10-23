@@ -12,7 +12,6 @@ const { isLoggedIn } = storeToRefs(useUserStore());
 
 const loaded = ref(false);
 let posts = ref<Array<Record<string, string>>>([]);
-let likes = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
 let searchAuthor = ref("");
 
@@ -28,17 +27,6 @@ async function getPosts(author?: string) {
   posts.value = postResults;
 }
 
-async function getLikes(postId: string) {
-  let likeResults;
-  try {
-    likeResults = await fetchy(`/api/posts/${postId}/likes`, "GET");
-  } catch (_) {
-    return;
-  }
-  likes.value.push(likeResults);
-  console.log(likes.value);
-}
-
 function updateEditing(id: string) {
   editing.value = id;
 }
@@ -46,9 +34,6 @@ function updateEditing(id: string) {
 onBeforeMount(async () => {
   await getPosts();
   loaded.value = true;
-  for (const post of posts.value) {
-    await getLikes(post._id);
-  }
 });
 </script>
 
