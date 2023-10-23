@@ -28,7 +28,7 @@ onBeforeMount(async () => {
 </template>
 
 <style scoped>
-p {
+button {
   margin: 0em;
   margin-left: 1em;
 }
