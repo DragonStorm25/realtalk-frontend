@@ -38,7 +38,7 @@ onBeforeMount(async () => {
 <template>
   <section v-if="isLoggedIn">
     <h2>Create a comment:</h2>
-    <CreateCommentForm @refreshComments="getComments" />
+    <CreateCommentForm @refreshComments="getComments" :target="props.target" />
   </section>
   <section class="comments" v-if="loaded && comments.length !== 0">
     <article v-for="comment in comments" :key="comment._id">
