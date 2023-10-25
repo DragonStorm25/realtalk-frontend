@@ -15,8 +15,11 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
         <h1 v-else>Please login!</h1>
       </section>
     </div>
-    <div class="split right">
+    <div class="split middle">
       <PostListComponent />
+    </div>
+    <div class="split right">
+      <p>Test</p>
     </div>
   </main>
 </template>
@@ -29,7 +32,7 @@ h1 {
 /* Split the screen in half */
 .split {
   height: 100%;
-  position: fixed;
+  float: left;
 }
 
 /* Control the left side */
@@ -39,8 +42,12 @@ h1 {
 }
 
 /* Control the right side */
+.middle {
+  width: 50%;
+}
+
 .right {
-  width: 70%;
+  width: 20%;
   right: 0;
 }
 </style>
