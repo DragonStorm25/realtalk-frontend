@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CreatePostForm from "@/components/Post/CreatePostForm.vue";
+import CreateCommentForm from "./CreateCommentForm.vue";
 import EditPostForm from "@/components/Post/EditPostForm.vue";
 import CommentComponent from "./CommentComponent.vue";
 import { useUserStore } from "@/stores/user";
@@ -37,7 +37,7 @@ onBeforeMount(async () => {
 <template>
   <section v-if="isLoggedIn">
     <h2>Create a post:</h2>
-    <CreatePostForm @refreshPosts="getComments" />
+    <CreateCommentForm @refreshComments="getComments" />
   </section>
   <section class="posts" v-if="loaded && comments.length !== 0">
     <article v-for="post in comments" :key="post._id">
