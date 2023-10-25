@@ -13,6 +13,7 @@ const props = defineProps(["target"]);
 
 const loaded = ref(false);
 let comments = ref<Array<Record<string, string>>>([]);
+let commenting = ref(false);
 let editing = ref("");
 
 async function getComments() {
@@ -36,7 +37,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <section v-if="isLoggedIn">
+  <section v-if="isLoggedIn && commenting">
     <CreateCommentForm @refreshComments="getComments" :target="props.target" />
   </section>
   <section class="comments" v-if="loaded && comments.length !== 0">
