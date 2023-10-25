@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CreateCommentForm from "./CreateCommentForm.vue";
-import EditPostForm from "@/components/Post/EditPostForm.vue";
+import EditCommentForm from "./EditCommentForm.vue";
 import CommentComponent from "./CommentComponent.vue";
 import { useUserStore } from "@/stores/user";
 import { fetchy } from "@/utils/fetchy";
@@ -41,8 +41,8 @@ onBeforeMount(async () => {
   </section>
   <section class="posts" v-if="loaded && comments.length !== 0">
     <article v-for="post in comments" :key="post._id">
-      <CommentComponent v-if="editing !== post._id" :post="post" @refreshPosts="getComments" @editPost="updateEditing" />
-      <EditPostForm v-else :post="post" @refreshPosts="getComments" @editPost="updateEditing" />
+      <CommentComponent v-if="editing !== post._id" :post="post" @refreshComments="getComments" @editComment="updateEditing" />
+      <EditCommentForm v-else :post="post" @refreshComments="getComments" @editComment="updateEditing" />
     </article>
   </section>
   <p v-else-if="loaded">No posts found</p>
