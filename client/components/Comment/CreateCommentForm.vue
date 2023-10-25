@@ -3,17 +3,17 @@ import { ref } from "vue";
 import { fetchy } from "../../utils/fetchy";
 
 const content = ref("");
-const emit = defineEmits(["refreshPosts"]);
+const emit = defineEmits(["refreshComments"]);
 
-const createPost = async (content: string) => {
+const createComment = async (target: string, content: string) => {
   try {
-    await fetchy("/api/posts", "POST", {
-      body: { content },
+    await fetchy("/api/comments", "POST", {
+      body: { content, target },
     });
   } catch (_) {
     return;
   }
-  emit("refreshPosts");
+  emit("refreshComments");
   emptyForm();
 };
 
