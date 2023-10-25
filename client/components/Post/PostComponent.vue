@@ -27,7 +27,7 @@ const deletePost = async () => {
   <div class="base">
     <div class="base">
       <LikeComponent :target_id="props.post._id" target_type="post" />
-      <TrustComponent :post_id="props.post._id" />
+      <TrustComponent :target_id="props.post._id" target_type="post" />
     </div>
     <menu v-if="props.post.author == currentUsername">
       <li><button class="btn-small pure-button" @click="emit('editPost', props.post._id)">Edit</button></li>
