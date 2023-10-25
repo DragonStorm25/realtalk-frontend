@@ -9,7 +9,7 @@ const props = defineProps(["comment"]);
 <template>
   <div class="comment-box">
     <p class="author">{{ props.comment.author }}</p>
-    <p>{{ props.comment.content }}</p>
+    <p class="content">{{ props.comment.content }}</p>
     <div class="base">
       <div class="base">
         <LikeComponent :target_id="props.comment._id" target_type="comment" />
@@ -31,6 +31,10 @@ p {
 .author {
   font-weight: bold;
   font-size: 1.2em;
+}
+
+.content {
+  margin: 1em;
 }
 
 .timestamp {
