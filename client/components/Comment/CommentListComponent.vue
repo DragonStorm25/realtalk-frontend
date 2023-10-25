@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CreatePostForm from "@/components/Post/CreatePostForm.vue";
 import EditPostForm from "@/components/Post/EditPostForm.vue";
-import PostComponent from "@/components/Post/PostComponent.vue";
+import CommentComponent from "./CommentComponent.vue";
 import { useUserStore } from "@/stores/user";
 import { fetchy } from "@/utils/fetchy";
 import { storeToRefs } from "pinia";
@@ -11,20 +11,17 @@ import SearchPostForm from "./SearchPostForm.vue";
 const { isLoggedIn } = storeToRefs(useUserStore());
 
 const loaded = ref(false);
-let posts = ref<Array<Record<string, string>>>([]);
+let comments = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
-let searchAuthor = ref("");
 
-async function getPosts(author?: string) {
-  let query: Record<string, string> = author !== undefined ? { author } : {};
-  let postResults;
+async function getComments(target?: string) {
+  let commentResults;
   try {
-    postResults = await fetchy("/api/posts", "GET", { query });
+    commentResults = await fetchy(`/api/posts/${target}/comments`, "GET");
   } catch (_) {
     return;
   }
-  searchAuthor.value = author ? author : "";
-  posts.value = postResults;
+  comments.value = commentResults;
 }
 
 function updateEditing(id: string) {
@@ -32,7 +29,7 @@ function updateEditing(id: string) {
 }
 
 onBeforeMount(async () => {
-  await getPosts();
+  await getComments();
   loaded.value = true;
 });
 </script>
@@ -40,17 +37,12 @@ onBeforeMount(async () => {
 <template>
   <section v-if="isLoggedIn">
     <h2>Create a post:</h2>
-    <CreatePostForm @refreshPosts="getPosts" />
+    <CreatePostForm @refreshPosts="getComments" />
   </section>
-  <div class="row">
-    <h2 v-if="!searchAuthor">Posts:</h2>
-    <h2 v-else>Posts by {{ searchAuthor }}:</h2>
-    <SearchPostForm @getPostsByAuthor="getPosts" />
-  </div>
-  <section class="posts" v-if="loaded && posts.length !== 0">
-    <article v-for="post in posts" :key="post._id">
-      <PostComponent v-if="editing !== post._id" :post="post" @refreshPosts="getPosts" @editPost="updateEditing" />
-      <EditPostForm v-else :post="post" @refreshPosts="getPosts" @editPost="updateEditing" />
+  <section class="posts" v-if="loaded && comments.length !== 0">
+    <article v-for="post in comments" :key="post._id">
+      <CommentComponent v-if="editing !== post._id" :post="post" @refreshPosts="getComments" @editPost="updateEditing" />
+      <EditPostForm v-else :post="post" @refreshPosts="getComments" @editPost="updateEditing" />
     </article>
   </section>
   <p v-else-if="loaded">No posts found</p>
