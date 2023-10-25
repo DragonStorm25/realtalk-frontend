@@ -38,7 +38,7 @@ const deletePost = async () => {
       <p v-else>Created on: {{ formatDate(props.post.dateCreated) }}</p>
     </article>
   </div>
-  <CommentListComponent />
+  <CommentListComponent :target="$props.post._id" />
 </template>
 
 <style scoped>
