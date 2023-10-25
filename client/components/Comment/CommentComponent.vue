@@ -6,12 +6,23 @@ const props = defineProps(["comment"]);
   <div class="comment-box">
     <p class="author">{{ props.comment.author }}</p>
     <p>{{ props.comment.context }}</p>
+    <div class="base"></div>
   </div>
 </template>
 
 <style scoped>
-button {
+p {
   margin: 0em;
-  margin-left: 1em;
+}
+
+.author {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.base {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>
