@@ -81,7 +81,9 @@ article {
 }
 
 .posts {
+  height: 50%;
   padding: 1em;
+  overflow-y: auto;
 }
 
 .row {
