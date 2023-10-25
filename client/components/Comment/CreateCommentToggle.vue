@@ -3,15 +3,21 @@ import { ref } from "vue";
 
 let open = ref(false);
 const emit = defineEmits(["toggleCommentCreate"]);
+let commentToggleText = ref("Comment");
 
 function toggleOpen() {
   open.value = !open.value;
+  if (open.value) {
+    commentToggleText.value = "Cancel";
+  } else {
+    commentToggleText.value = "Comment";
+  }
   emit("toggleCommentCreate");
 }
 </script>
 
 <template>
-  <button class="pure-button" @click="toggleOpen">Comment</button>
+  <button class="pure-button" @click="toggleOpen">{{ commentToggleText }}</button>
 </template>
 
 <style scoped>
