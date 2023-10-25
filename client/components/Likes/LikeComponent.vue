@@ -2,31 +2,31 @@
 import { fetchy } from "../../utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 
-const props = defineProps(["post_id"]);
+const props = defineProps(["target_id", "target_type"]);
 let likes = ref({ likes: 0, dislikes: 0 });
 
 async function getLikes() {
   let likeResults;
   try {
-    likeResults = await fetchy(`/api/posts/${props.post_id}/likes`, "GET");
+    likeResults = await fetchy(`/api/posts/${props.target_id}/likes`, "GET");
   } catch (_) {
     return;
   }
   likes.value = likeResults;
 }
 
-async function likePost() {
+async function likeTarget() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/like`, "PATCH");
+    await fetchy(`/api/posts/${props.target_id}/like`, "PATCH");
     await getLikes();
   } catch (_) {
     return;
   }
 }
 
-async function dislikePost() {
+async function dislikeTarget() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/dislike`, "PATCH");
+    await fetchy(`/api/posts/${props.target_id}/dislike`, "PATCH");
     await getLikes();
   } catch (_) {
     return;
@@ -40,8 +40,8 @@ onBeforeMount(async () => {
 
 <template>
   <div class="likes-box">
-    <button class="pure-button" @click="likePost">Likes: {{ likes.likes }}</button>
-    <button class="pure-button" @click="dislikePost">Dislikes: {{ likes.dislikes }}</button>
+    <button class="pure-button" @click="likeTarget">Likes: {{ likes.likes }}</button>
+    <button class="pure-button" @click="dislikeTarget">Dislikes: {{ likes.dislikes }}</button>
   </div>
 </template>
 
