@@ -6,8 +6,8 @@ const props = defineProps(["comment"]);
 
 <template>
   <div class="comment-box">
-    <p class="author">Author: {{ props.comment.author }}</p>
-    <p>Content: {{ props.comment.content }}</p>
+    <p class="author">{{ props.comment.author }}</p>
+    <p>{{ props.comment.content }}</p>
     <div class="base">
       <article class="timestamp">
         <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
