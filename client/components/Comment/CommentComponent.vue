@@ -10,7 +10,7 @@ const props = defineProps(["comment"]);
   <div class="comment-box">
     <p class="author">{{ props.comment.author }}</p>
     <p class="content">{{ props.comment.content }}</p>
-    <div class="base">
+    <div class="base upper-border">
       <div class="base">
         <LikeComponent :target_id="props.comment._id" target_type="comment" />
         <TrustComponent :target_id="props.comment._id" target_type="comment" />
@@ -50,6 +50,11 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.upper-border {
+  border-top-style: solid;
+  border-top-color: lightgray;
 }
 
 .base article:only-child {

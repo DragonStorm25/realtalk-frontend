@@ -24,7 +24,7 @@ const deletePost = async () => {
 <template>
   <p class="author">{{ props.post.author }}</p>
   <p class="content">{{ props.post.content }}</p>
-  <div class="base">
+  <div class="base upper-border">
     <div class="base">
       <LikeComponent :target_id="props.post._id" target_type="post" />
       <TrustComponent :target_id="props.post._id" target_type="post" />
@@ -79,6 +79,11 @@ menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.upper-border {
+  border-top-style: solid;
+  border-top-color: lightgray;
 }
 
 .base article:only-child {
