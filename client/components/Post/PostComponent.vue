@@ -23,7 +23,7 @@ const deletePost = async () => {
 
 <template>
   <p class="author">{{ props.post.author }}</p>
-  <p>{{ props.post.content }}</p>
+  <p class="content">{{ props.post.content }}</p>
   <div class="base">
     <div class="base">
       <LikeComponent :target_id="props.post._id" target_type="post" />
@@ -53,6 +53,10 @@ p {
   font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-color: lightgray;
+}
+
+.content {
+  margin: 1em;
 }
 
 menu {
