@@ -6,10 +6,14 @@ import { formatDate } from "@/utils/formatDate";
 import { storeToRefs } from "pinia";
 import { fetchy } from "../../utils/fetchy";
 import CommentListComponent from "../Comment/CommentListComponent.vue";
+import CreateCommentToggle from "../Comment/CreateCommentToggle.vue";
+import { ref } from "vue";
 
 const props = defineProps(["post"]);
 const emit = defineEmits(["editPost", "refreshPosts"]);
 const { currentUsername } = storeToRefs(useUserStore());
+
+let createComment = ref(false);
 
 const deletePost = async () => {
   try {
@@ -19,6 +23,11 @@ const deletePost = async () => {
   }
   emit("refreshPosts");
 };
+
+function toggleCommentCreate() {
+  console.log("Toggle comment");
+  createComment.value = !createComment.value;
+}
 </script>
 
 <template>
@@ -28,6 +37,7 @@ const deletePost = async () => {
     <div class="base">
       <LikeComponent :target_id="props.post._id" target_type="post" />
       <TrustComponent :target_id="props.post._id" target_type="post" />
+      <CreateCommentToggle @toggle-comment-create="toggleCommentCreate" />
     </div>
     <menu v-if="props.post.author == currentUsername">
       <li><button class="btn-small pure-button" @click="emit('editPost', props.post._id)">Edit</button></li>
@@ -39,7 +49,7 @@ const deletePost = async () => {
     </article>
   </div>
   <div class="comments">
-    <CommentListComponent :target="$props.post._id" />
+    <CommentListComponent :target="$props.post._id" :toggle-open="createComment" />
   </div>
 </template>
 

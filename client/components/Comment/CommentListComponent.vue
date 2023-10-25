@@ -9,11 +9,10 @@ import { onBeforeMount, ref } from "vue";
 
 const { isLoggedIn } = storeToRefs(useUserStore());
 
-const props = defineProps(["target"]);
+const props = defineProps(["target", "toggleOpen"]);
 
 const loaded = ref(false);
 let comments = ref<Array<Record<string, string>>>([]);
-let commenting = ref(false);
 let editing = ref("");
 
 async function getComments() {
@@ -37,7 +36,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <section v-if="isLoggedIn && commenting">
+  <section v-if="isLoggedIn && props.toggleOpen.value">
     <CreateCommentForm @refreshComments="getComments" :target="props.target" />
   </section>
   <section class="comments" v-if="loaded && comments.length !== 0">
