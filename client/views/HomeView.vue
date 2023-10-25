@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PostListComponent from "@/components/Post/PostListComponent.vue";
+import UserComponent from "@/components/User/UserComponent.vue";
 import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 
@@ -12,7 +13,7 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
       <PostListComponent />
     </div>
     <div class="split right">
-      <p>Test</p>
+      <UserComponent :user="currentUsername" :loggedIn="isLoggedIn" />
     </div>
   </main>
 </template>
