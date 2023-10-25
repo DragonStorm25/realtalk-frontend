@@ -2,9 +2,11 @@
 import { ref } from "vue";
 
 let open = ref(false);
+const emit = defineEmits(["toggleCommentCreate"]);
 
 function toggleOpen() {
   open.value = !open.value;
+  emit("toggleCommentCreate");
 }
 </script>
 
