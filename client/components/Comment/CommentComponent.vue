@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LikeComponent from "../Likes/LikeComponent.vue";
+import TrustComponent from "../Trusts/TrustComponent.vue";
 import { formatDate } from "@/utils/formatDate";
 
 const props = defineProps(["comment"]);
@@ -10,7 +11,10 @@ const props = defineProps(["comment"]);
     <p class="author">{{ props.comment.author }}</p>
     <p>{{ props.comment.content }}</p>
     <div class="base">
-      <LikeComponent :target_id="props.comment._id" target_type="comment" />
+      <div class="base">
+        <LikeComponent :target_id="props.comment._id" target_type="comment" />
+        <TrustComponent :target_id="props.comment._id" target_type="comment" />
+      </div>
       <article class="timestamp">
         <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
         <p v-else>Created on: {{ formatDate(props.comment.dateCreated) }}</p>
