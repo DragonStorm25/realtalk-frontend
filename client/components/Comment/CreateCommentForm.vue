@@ -26,8 +26,7 @@ const emptyForm = () => {
 
 <template>
   <form @submit.prevent="createComment(props.target, content)">
-    <label for="content">Comment Contents:</label>
-    <textarea id="content" v-model="content" placeholder="Create a coment!" required> </textarea>
+    <textarea id="content" v-model="content" placeholder="Comment something..." required> </textarea>
     <button type="submit" class="pure-button-primary pure-button">Create Comment</button>
   </form>
 </template>
