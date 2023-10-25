@@ -26,7 +26,7 @@ const deletePost = async () => {
   <p>{{ props.post.content }}</p>
   <div class="base">
     <div class="base">
-      <LikeComponent :post_id="props.post._id" target_type="post" />
+      <LikeComponent :target_id="props.post._id" target_type="post" />
       <TrustComponent :post_id="props.post._id" />
     </div>
     <menu v-if="props.post.author == currentUsername">
