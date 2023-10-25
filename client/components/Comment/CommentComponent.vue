@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { formatDate } from "@/utils/formatDate";
+
 const props = defineProps(["comment"]);
 </script>
 
@@ -6,7 +8,12 @@ const props = defineProps(["comment"]);
   <div class="comment-box">
     <p class="author">Author: {{ props.comment.author }}</p>
     <p>Content: {{ props.comment.content }}</p>
-    <div class="base"></div>
+    <div class="base">
+      <article class="timestamp">
+        <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
+        <p v-else>Created on: {{ formatDate(props.comment.dateCreated) }}</p>
+      </article>
+    </div>
   </div>
 </template>
 
