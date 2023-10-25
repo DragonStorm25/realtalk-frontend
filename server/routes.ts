@@ -175,6 +175,13 @@ class Routes {
     }
   }
 
+  @Router.get("/posts/:_id/comments")
+  async getCommentsOfPost(_id: ObjectId) {
+    await Post.assertPostExists(_id);
+    const comments = await Comment.getComments({ target: _id });
+    return comments;
+  }
+
   @Router.get("/comments")
   async getComments(author?: string) {
     let comments;
