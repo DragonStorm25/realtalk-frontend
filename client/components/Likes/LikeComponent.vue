@@ -8,7 +8,11 @@ let likes = ref({ likes: 0, dislikes: 0 });
 async function getLikes() {
   let likeResults;
   try {
-    likeResults = await fetchy(`/api/posts/${props.target_id}/likes`, "GET");
+    if (props.target_type == "post") {
+      likeResults = await fetchy(`/api/posts/${props.target_id}/likes`, "GET");
+    } else if (props.target_type == "comment") {
+      likeResults = await fetchy(`/api/comments/${props.target_id}/likes`, "GET");
+    }
   } catch (_) {
     return;
   }
