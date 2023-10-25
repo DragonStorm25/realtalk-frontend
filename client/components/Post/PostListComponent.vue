@@ -68,7 +68,7 @@ section,
 p,
 .row {
   margin: 0 auto;
-  max-width: 60em;
+  max-width: 70em;
 }
 
 article {
