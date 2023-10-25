@@ -25,7 +25,6 @@ const deletePost = async () => {
 };
 
 function toggleCommentCreate() {
-  console.log("Toggle comment");
   createComment.value = !createComment.value;
 }
 </script>
@@ -49,7 +48,7 @@ function toggleCommentCreate() {
     </article>
   </div>
   <div class="comments">
-    <CommentListComponent :target="$props.post._id" :toggle-open="createComment" />
+    <CommentListComponent :target="$props.post._id" :toggleOpen="createComment" />
   </div>
 </template>
 
