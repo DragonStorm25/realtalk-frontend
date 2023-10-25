@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const props = defineProps(["user, loggedIn"]);
+const props = defineProps(["username, loggedIn"]);
 </script>
 
 <template>
-  <p class="username">{{ props.user.username }}</p>
+  <p class="username">{{ props.username }}</p>
 </template>
 
 <style scoped></style>
