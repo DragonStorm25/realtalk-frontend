@@ -60,7 +60,7 @@ onBeforeMount(async () => {
 <style scoped>
 button {
   margin: 0em;
-  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .trusts-box {
