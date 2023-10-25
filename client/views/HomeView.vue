@@ -13,7 +13,7 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
       <PostListComponent />
     </div>
     <div class="split right">
-      <UserComponent :user="currentUsername" :loggedIn="isLoggedIn" />
+      <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
     </div>
   </main>
 </template>
