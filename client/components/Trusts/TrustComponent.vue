@@ -2,13 +2,17 @@
 import { fetchy } from "../../utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 
-const props = defineProps(["post_id"]);
+const props = defineProps(["target_id", "target_type"]);
 let trusts = ref({ trusts: 0, mistrusts: 0 });
 
 async function getTrusts() {
   let trustResults;
   try {
-    trustResults = await fetchy(`/api/posts/${props.post_id}/trusts`, "GET");
+    if (props.target_type == "post") {
+      trustResults = await fetchy(`/api/posts/${props.target_id}/trusts`, "GET");
+    } else if (props.target_type == "comment") {
+      trustResults = await fetchy(`/api/comments/${props.target_id}/trusts`, "GET");
+    }
   } catch (_) {
     return;
   }
@@ -17,7 +21,11 @@ async function getTrusts() {
 
 async function trustPost() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/trust`, "PATCH");
+    if (props.target_type == "post") {
+      await fetchy(`/api/posts/${props.target_id}/trust`, "PATCH");
+    } else if (props.target_type == "comment") {
+      await fetchy(`/api/comments/${props.target_id}/trust`, "PATCH");
+    }
     await getTrusts();
   } catch (_) {
     return;
@@ -26,7 +34,11 @@ async function trustPost() {
 
 async function mistrustPost() {
   try {
-    await fetchy(`/api/posts/${props.post_id}/mistrust`, "PATCH");
+    if (props.target_type == "post") {
+      await fetchy(`/api/posts/${props.target_id}/mistrust`, "PATCH");
+    } else if (props.target_type == "comment") {
+      await fetchy(`/api/comments/${props.target_id}/mistrust`, "PATCH");
+    }
     await getTrusts();
   } catch (_) {
     return;
