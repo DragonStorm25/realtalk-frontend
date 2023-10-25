@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import { fetchy } from "../../utils/fetchy";
 
+const props = defineProps(["target"]);
+
 const content = ref("");
 const emit = defineEmits(["refreshComments"]);
 
@@ -23,10 +25,10 @@ const emptyForm = () => {
 </script>
 
 <template>
-  <form @submit.prevent="createPost(content)">
-    <label for="content">Post Contents:</label>
-    <textarea id="content" v-model="content" placeholder="Create a post!" required> </textarea>
-    <button type="submit" class="pure-button-primary pure-button">Create Post</button>
+  <form @submit.prevent="createComment(props.target, content)">
+    <label for="content">Comment Contents:</label>
+    <textarea id="content" v-model="content" placeholder="Create a coment!" required> </textarea>
+    <button type="submit" class="pure-button-primary pure-button">Create Comment</button>
   </form>
 </template>
 
