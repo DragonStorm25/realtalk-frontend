@@ -60,7 +60,7 @@ section,
 p,
 .row {
   margin: 0 auto;
-  max-width: 60em;
+  max-width: 65em;
 }
 
 article {
@@ -76,6 +76,6 @@ article {
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 60em;
+  max-width: 65em;
 }
 </style>
