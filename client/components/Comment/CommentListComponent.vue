@@ -36,7 +36,7 @@ onBeforeMount(async () => {
 
 <template>
   <section v-if="isLoggedIn">
-    <h2>Create a post:</h2>
+    <h2>Create a comment:</h2>
     <CreateCommentForm @refreshComments="getComments" />
   </section>
   <section class="posts" v-if="loaded && comments.length !== 0">
