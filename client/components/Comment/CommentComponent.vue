@@ -4,8 +4,8 @@ const props = defineProps(["comment"]);
 
 <template>
   <div class="comment-box">
-    <p class="author">{{ props.comment.author }}</p>
-    <p>{{ props.comment.context }}</p>
+    <p class="author">Author: {{ props.comment.author }}</p>
+    <p>Content: {{ props.comment.content }}</p>
     <div class="base"></div>
   </div>
 </template>
