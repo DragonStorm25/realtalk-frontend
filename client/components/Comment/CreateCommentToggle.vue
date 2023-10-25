@@ -2,10 +2,14 @@
 import { ref } from "vue";
 
 let open = ref(false);
+
+function toggleOpen() {
+  open.value = !open.value;
+}
 </script>
 
 <template>
-  <button class="pure-button">Comment</button>
+  <button class="pure-button" @click="toggleOpen">Comment</button>
 </template>
 
 <style scoped>
