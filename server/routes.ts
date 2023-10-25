@@ -179,7 +179,7 @@ class Routes {
   async getCommentsOfPost(_id: ObjectId) {
     await Post.assertPostExists(_id);
     const comments = await Comment.getComments({ target: _id });
-    return comments;
+    return Responses.comments(comments);
   }
 
   @Router.get("/comments")
