@@ -44,7 +44,7 @@ onBeforeMount(async () => {
       <EditCommentForm v-else :post="post" @refreshComments="getComments" @editComment="updateEditing" />
     </article>
   </section>
-  <p v-else-if="loaded">No posts found</p>
+  <p v-else-if="loaded">No comments found</p>
   <p v-else>Loading...</p>
 </template>
 
