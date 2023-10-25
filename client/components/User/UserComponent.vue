@@ -1,9 +1,17 @@
 <script setup lang="ts">
-const props = defineProps(["username, loggedIn"]);
+import { useUserStore } from "@/stores/user";
+import { storeToRefs } from "pinia";
+
+const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 </script>
 
 <template>
-  <p class="username">{{ props.username }}</p>
+  <div v-if="isLoggedIn" class="logged-in">
+    <p class="username">{{ currentUsername }}</p>
+  </div>
+  <div v-else>
+    <p>Not logged in!</p>
+  </div>
 </template>
 
 <style scoped></style>
