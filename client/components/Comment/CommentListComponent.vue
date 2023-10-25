@@ -9,14 +9,16 @@ import { onBeforeMount, ref } from "vue";
 
 const { isLoggedIn } = storeToRefs(useUserStore());
 
+const props = defineProps(["target"]);
+
 const loaded = ref(false);
 let comments = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
 
-async function getComments(target?: string) {
+async function getComments() {
   let commentResults;
   try {
-    commentResults = await fetchy(`/api/posts/${target}/comments`, "GET");
+    commentResults = await fetchy(`/api/posts/${props.target}/comments`, "GET");
   } catch (_) {
     return;
   }
