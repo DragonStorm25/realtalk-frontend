@@ -40,7 +40,7 @@ onBeforeMount(async () => {
     <h2>Create a comment:</h2>
     <CreateCommentForm @refreshComments="getComments" />
   </section>
-  <section class="posts" v-if="loaded && comments.length !== 0">
+  <section class="comments" v-if="loaded && comments.length !== 0">
     <article v-for="comment in comments" :key="comment._id">
       <CommentComponent v-if="editing !== comment._id" :comment="comment" @refreshComments="getComments" @editComment="updateEditing" />
       <EditCommentForm v-else :comment="comment" @refreshComments="getComments" @editComment="updateEditing" />
@@ -70,10 +70,6 @@ article {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
-  padding: 1em;
-}
-
-.posts {
   padding: 1em;
 }
 
