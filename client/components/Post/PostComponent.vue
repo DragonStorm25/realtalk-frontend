@@ -51,6 +51,8 @@ p {
 .author {
   font-weight: bold;
   font-size: 1.2em;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
 }
 
 menu {
