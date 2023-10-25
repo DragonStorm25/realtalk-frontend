@@ -21,7 +21,11 @@ async function getLikes() {
 
 async function likeTarget() {
   try {
-    await fetchy(`/api/posts/${props.target_id}/like`, "PATCH");
+    if (props.target_type == "post") {
+      await fetchy(`/api/posts/${props.target_id}/like`, "PATCH");
+    } else if (props.target_type == "comment") {
+      await fetchy(`/api/comments/${props.target_id}/like`, "PATCH");
+    }
     await getLikes();
   } catch (_) {
     return;
@@ -30,7 +34,11 @@ async function likeTarget() {
 
 async function dislikeTarget() {
   try {
-    await fetchy(`/api/posts/${props.target_id}/dislike`, "PATCH");
+    if (props.target_type == "post") {
+      await fetchy(`/api/posts/${props.target_id}/dislike`, "PATCH");
+    } else if (props.target_type == "comment") {
+      await fetchy(`/api/comments/${props.target_id}/dislike`, "PATCH");
+    }
     await getLikes();
   } catch (_) {
     return;
