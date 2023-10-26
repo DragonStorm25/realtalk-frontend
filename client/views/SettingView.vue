@@ -26,3 +26,9 @@ async function delete_() {
     <UpdateUserForm />
   </main>
 </template>
+
+<style scoped>
+.column {
+  background: var(--darker-bg);
+}
+</style>
