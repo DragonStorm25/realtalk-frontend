@@ -30,7 +30,7 @@ h1 {
 /* Split the screen in half */
 .split {
   height: 100%;
-  padding-left: 10px;
+  padding: 1em;
   float: left;
   background: var(--darker-bg);
 }
