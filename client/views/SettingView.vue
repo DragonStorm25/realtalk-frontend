@@ -30,6 +30,7 @@ async function delete_() {
 <style scoped>
 .column {
   background: var(--darker-bg);
+  min-height: 100vh;
 }
 
 h1 {
