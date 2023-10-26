@@ -31,4 +31,8 @@ async function delete_() {
 .column {
   background: var(--darker-bg);
 }
+
+h1 {
+  color: var(--font-color);
+}
 </style>
