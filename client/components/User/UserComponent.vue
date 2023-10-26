@@ -3,6 +3,18 @@ import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 
 const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
+
+let karma = ref("");
+
+async function getKarma() {
+  let karmaResults;
+  try {
+    karmaResults = await fetchy(`/api/users/${currentUsername}/karma`, "GET");
+  } catch (_) {
+    return;
+  }
+  karma.value = karmaResults;
+}
 </script>
 
 <template>
