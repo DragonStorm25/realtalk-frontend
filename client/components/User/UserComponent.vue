@@ -19,7 +19,11 @@ async function getKarma() {
 }
 
 onBeforeMount(async () => {
-  await getKarma();
+  if (isLoggedIn.value) {
+    await getKarma();
+  } else {
+    karma.value = 0;
+  }
 });
 </script>
 
