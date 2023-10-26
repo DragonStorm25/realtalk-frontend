@@ -33,7 +33,7 @@ export const useUserStore = defineStore(
       try {
         const { username } = await fetchy("/api/session", "GET", { alert: false });
         currentUsername.value = username;
-        const { karma } = await fetchy(`/api/users/${username}/karma`, "GET");
+        const karma = await fetchy(`/api/users/${username}/karma`, "GET");
         currentKarma.value = karma;
       } catch {
         currentUsername.value = "";
