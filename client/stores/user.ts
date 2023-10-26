@@ -10,8 +10,11 @@ export const useUserStore = defineStore(
 
     const isLoggedIn = computed(() => currentUsername.value !== "");
 
+    const currentKarma = ref(0);
+
     const resetStore = () => {
       currentUsername.value = "";
+      currentKarma.value = 0;
     };
 
     const createUser = async (username: string, password: string) => {
@@ -30,8 +33,11 @@ export const useUserStore = defineStore(
       try {
         const { username } = await fetchy("/api/session", "GET", { alert: false });
         currentUsername.value = username;
+        const { karma } = await fetchy(`/api/users/${username}/karma`, "GET");
+        currentKarma.value = karma;
       } catch {
         currentUsername.value = "";
+        currentKarma.value = 0;
       }
     };
 
@@ -52,6 +58,7 @@ export const useUserStore = defineStore(
     return {
       currentUsername,
       isLoggedIn,
+      currentKarma,
       createUser,
       loginUser,
       updateSession,
