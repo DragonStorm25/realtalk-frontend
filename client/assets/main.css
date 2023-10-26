@@ -3,6 +3,8 @@
 :root {
   --red: rgb(208, 67, 12);
   --base-bg: #300038;
+  --darker-bg: #200028;
+  --font-color: #fff;
 }
 
 button.btn-small {
