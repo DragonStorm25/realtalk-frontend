@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
+import { onBeforeMount, ref } from "vue";
 
 const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 
@@ -15,6 +16,10 @@ async function getKarma() {
   }
   karma.value = karmaResults;
 }
+
+onBeforeMount(async () => {
+  await getKarma();
+});
 </script>
 
 <template>
