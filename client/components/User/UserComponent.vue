@@ -6,12 +6,14 @@ const { currentUsername, isLoggedIn, currentKarma } = storeToRefs(useUserStore()
 </script>
 
 <template>
-  <div v-if="isLoggedIn" class="logged-in">
-    <p class="username">{{ currentUsername }}</p>
-    <p class="karma">{{ currentKarma > 0 ? "+" : currentKarma < 0 ? "-" : "" }}{{ currentKarma }} karma</p>
-  </div>
-  <div v-else>
-    <p class="username logged-out">Not logged in!</p>
+  <div class="profile-wrapper">
+    <div v-if="isLoggedIn" class="logged-in">
+      <p class="username">{{ currentUsername }}</p>
+      <p class="karma">{{ currentKarma > 0 ? "+" : currentKarma < 0 ? "-" : "" }}{{ currentKarma }} karma</p>
+    </div>
+    <div v-else>
+      <p class="username logged-out">Not logged in!</p>
+    </div>
   </div>
 </template>
 
@@ -21,6 +23,12 @@ const { currentUsername, isLoggedIn, currentKarma } = storeToRefs(useUserStore()
   font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-color: lightgray;
+}
+
+.profile-wrapper {
+  background-color: var(--base-bg);
+  border-radius: 1em;
+  padding: 1em;
 }
 
 .logged-out {
