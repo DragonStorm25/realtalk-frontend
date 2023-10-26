@@ -14,4 +14,11 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.username {
+  font-weight: bold;
+  font-size: 1.2em;
+  border-bottom-style: solid;
+  border-bottom-color: lightgray;
+}
+</style>
