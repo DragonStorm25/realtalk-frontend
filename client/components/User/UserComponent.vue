@@ -4,7 +4,7 @@ import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 import { onBeforeMount, ref } from "vue";
 
-const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
+const { currentUsername, isLoggedIn, currentKarma } = storeToRefs(useUserStore());
 
 let karma = ref(0);
 
@@ -18,19 +18,25 @@ async function getKarma() {
   karma.value = karmaResults;
 }
 
+function printKarma() {
+  console.log(currentKarma);
+}
+
 onBeforeMount(async () => {
   if (isLoggedIn.value) {
-    await getKarma();
+    // await getKarma();
   } else {
     karma.value = 0;
   }
+  console.log(currentKarma.value);
 });
 </script>
 
 <template>
   <div v-if="isLoggedIn" class="logged-in">
     <p class="username">{{ currentUsername }}</p>
-    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} karma</p>
+    <p class="karma">{{ currentKarma > 0 ? "+" : currentKarma < 0 ? "-" : "" }}{{ currentKarma }} karma</p>
+    <button @click="printKarma">Print Karma</button>
   </div>
   <div v-else>
     <p class="username logged-out">Not logged in!</p>
