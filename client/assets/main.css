@@ -5,6 +5,7 @@
   --base-bg: #300038;
   --darker-bg: #200028;
   --border-color: #180020;
+  --button-color: #482060;
   --font-color: #fff;
   --underline-color: #800088;
 }
@@ -16,6 +17,11 @@ button.btn-small {
 button.button-error {
   color: white;
   background: var(--red);
+}
+
+button.submit {
+  background-color: var(--button-color);
+  color: var(--font-color);
 }
 
 a.button {
