@@ -31,7 +31,6 @@ h1 {
 
 /* Split the screen in half */
 .split {
-  height: 100%;
   padding: 1em;
   float: left;
   background: var(--darker-bg);
@@ -39,6 +38,7 @@ h1 {
 
 /* Control the left side */
 .left {
+  height: 100%;
   width: 75%;
 }
 
