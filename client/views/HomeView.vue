@@ -28,6 +28,7 @@ h1 {
   height: 100%;
   margin-left: 10px;
   float: left;
+  background: var(--darker-bg);
 }
 
 /* Control the left side */
