@@ -26,7 +26,7 @@ h1 {
 /* Split the screen in half */
 .split {
   height: 100%;
-  margin-left: 10px;
+  padding-left: 10px;
   float: left;
   background: var(--darker-bg);
 }
@@ -44,8 +44,6 @@ h1 {
 .right {
   width: calc(25% - 30px - 2em);
   background-color: var(--base-bg);
-  border-radius: 1em;
-  margin-top: 20px;
   padding: 1em;
 }
 </style>
