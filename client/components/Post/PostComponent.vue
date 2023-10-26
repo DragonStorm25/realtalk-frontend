@@ -54,6 +54,7 @@ function toggleCommentCreate() {
 
 <style scoped>
 p {
+  color: var(--font-color);
   margin: 0em;
 }
 
