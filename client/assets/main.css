@@ -2,7 +2,7 @@
 
 :root {
   --red: rgb(208, 67, 12);
-  --base-bg: #f1f3f5;
+  --base-bg: #300038;
 }
 
 button.btn-small {
@@ -29,4 +29,9 @@ a.button {
   justify-content: center;
   align-items: center;
   gap: 1em;
+}
+
+
+p {
+  color: white;
 }
