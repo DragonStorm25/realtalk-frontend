@@ -29,7 +29,7 @@ onBeforeMount(async () => {
     <p class="karma">{{ karma > 0 ? "+" : "-" }}{{ karma }} karma</p>
   </div>
   <div v-else>
-    <p>Not logged in!</p>
+    <p class="username">Not logged in!</p>
   </div>
 </template>
 
