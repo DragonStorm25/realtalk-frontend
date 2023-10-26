@@ -1,16 +1,17 @@
 <script setup lang="ts">
+import { fetchy } from "../../utils/fetchy";
 import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 import { onBeforeMount, ref } from "vue";
 
 const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 
-let karma = ref("");
+let karma = ref(0);
 
 async function getKarma() {
   let karmaResults;
   try {
-    karmaResults = await fetchy(`/api/users/${currentUsername}/karma`, "GET");
+    karmaResults = await fetchy(`/api/users/${currentUsername.value}/karma`, "GET");
   } catch (_) {
     return;
   }
@@ -25,6 +26,7 @@ onBeforeMount(async () => {
 <template>
   <div v-if="isLoggedIn" class="logged-in">
     <p class="username">{{ currentUsername }}</p>
+    <p class="karma">{{ karma }}</p>
   </div>
   <div v-else>
     <p>Not logged in!</p>
