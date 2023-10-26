@@ -52,7 +52,8 @@ input {
   color: var(--font-color);
 }
 
-legend {
+legend,
+h2 {
   color: var(--font-color);
 }
 </style>
