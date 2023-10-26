@@ -29,7 +29,7 @@ onBeforeMount(async () => {
     <p class="karma">{{ karma > 0 ? "+" : "-" }}{{ karma }} karma</p>
   </div>
   <div v-else>
-    <p class="username">Not logged in!</p>
+    <p class="username logged-out">Not logged in!</p>
   </div>
 </template>
 
@@ -39,5 +39,9 @@ onBeforeMount(async () => {
   font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-color: lightgray;
+}
+
+.logged-out {
+  text-align: center;
 }
 </style>
