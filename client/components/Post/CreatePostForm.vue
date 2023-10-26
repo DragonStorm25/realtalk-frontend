@@ -38,6 +38,7 @@ form {
   flex-direction: column;
   gap: 0.5em;
   padding: 1em;
+  color: var(--font-color);
 }
 
 textarea {
@@ -47,5 +48,7 @@ textarea {
   padding: 0.5em;
   border-radius: 4px;
   resize: none;
+  background-color: var(--darker-bg);
+  color: var(--font-color);
 }
 </style>
