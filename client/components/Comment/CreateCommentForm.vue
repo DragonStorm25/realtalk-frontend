@@ -27,18 +27,18 @@ const emptyForm = () => {
 <template>
   <form @submit.prevent="createComment(props.target, content)">
     <textarea id="content" v-model="content" placeholder="Comment something..." required> </textarea>
-    <button type="submit" class="pure-button-primary pure-button">Create Comment</button>
+    <button type="submit" class="pure-button-primary pure-button submit">Create Comment</button>
   </form>
 </template>
 
 <style scoped>
 form {
-  background-color: var(--base-bg);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
   padding: 1em;
+  color: var(--font-color);
 }
 
 textarea {
@@ -48,5 +48,8 @@ textarea {
   padding: 0.5em;
   border-radius: 4px;
   resize: none;
+  background-color: var(--darker-bg);
+  color: var(--font-color);
+  border-color: var(--border-color);
 }
 </style>
