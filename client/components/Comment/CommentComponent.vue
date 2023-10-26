@@ -51,7 +51,7 @@ p {
   font-weight: bold;
   font-size: 1.2em;
   border-bottom-style: solid;
-  border-bottom-color: lightgray;
+  border-bottom-color: var(--underline-color);
 }
 
 .content {
@@ -82,7 +82,7 @@ menu {
 
 .upper-border {
   border-top-style: solid;
-  border-top-color: lightgray;
+  border-top-color: var(--underline-color);
 }
 
 .base article:only-child {
