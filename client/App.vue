@@ -94,5 +94,8 @@ ul {
 
 .selected {
   font-weight: bold;
+  background: var(--base-bg);
+  border-radius: 1em;
+  padding: 0.7em;
 }
 </style>
