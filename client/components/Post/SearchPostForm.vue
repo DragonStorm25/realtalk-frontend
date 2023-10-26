@@ -22,4 +22,8 @@ form {
   padding: 1em;
   align-items: center;
 }
+
+legend {
+  color: var(--font-color);
+}
 </style>
