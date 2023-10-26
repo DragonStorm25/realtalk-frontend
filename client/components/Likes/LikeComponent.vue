@@ -61,6 +61,8 @@ onBeforeMount(async () => {
 button {
   margin: 0em;
   margin-right: 1em;
+  background-color: var(--darker-bg);
+  color: var(--font-color);
 }
 
 .likes-box {

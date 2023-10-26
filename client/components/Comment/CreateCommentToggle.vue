@@ -30,6 +30,11 @@ form {
   padding: 1em;
 }
 
+button {
+  background-color: var(--darker-bg);
+  color: var(--font-color);
+}
+
 textarea {
   font-family: inherit;
   font-size: inherit;
