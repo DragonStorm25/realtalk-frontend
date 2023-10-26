@@ -26,7 +26,7 @@ onBeforeMount(async () => {
 <template>
   <div v-if="isLoggedIn" class="logged-in">
     <p class="username">{{ currentUsername }}</p>
-    <p class="karma">{{ karma > 0 ? "+" : "-" }}{{ karma }} karma</p>
+    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} karma</p>
   </div>
   <div v-else>
     <p class="username logged-out">Not logged in!</p>
