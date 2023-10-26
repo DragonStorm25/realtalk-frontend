@@ -50,5 +50,6 @@ textarea {
   resize: none;
   background-color: var(--darker-bg);
   color: var(--font-color);
+  border-color: var(--border-color);
 }
 </style>
