@@ -19,6 +19,10 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 </template>
 
 <style scoped>
+main {
+  display: flex;
+}
+
 h1 {
   text-align: center;
 }
@@ -42,8 +46,7 @@ h1 {
 }
 
 .right {
-  width: calc(25% - 30px - 2em);
-  background-color: var(--base-bg);
+  flex-grow: 1;
   padding: 1em;
 }
 </style>
