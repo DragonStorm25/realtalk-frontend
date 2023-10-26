@@ -66,6 +66,10 @@ section {
   gap: 1em;
 }
 
+h2 {
+  color: var(--font-color);
+}
+
 section,
 p,
 .row {
