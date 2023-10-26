@@ -8,7 +8,7 @@ const { currentUsername, isLoggedIn, currentKarma } = storeToRefs(useUserStore()
 <template>
   <div v-if="isLoggedIn" class="logged-in">
     <p class="username">{{ currentUsername }}</p>
-    <p class="karma">{{ currentKarma }} karma</p>
+    <p class="karma">{{ currentKarma > 0 ? "+" : currentKarma < 0 ? "-" : "" }}{{ currentKarma }} karma</p>
   </div>
   <div v-else>
     <p class="username logged-out">Not logged in!</p>
