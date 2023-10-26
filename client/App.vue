@@ -57,11 +57,14 @@ nav {
   background-color: lightgray;
   display: flex;
   align-items: center;
+  background-color: var(--button-color);
+  color: var(--font-color);
 }
 
 h1 {
   font-size: 2em;
   margin: 0;
+  color: var(--font-color);
 }
 
 .title {
