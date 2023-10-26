@@ -79,7 +79,7 @@ img {
 
 a {
   font-size: large;
-  color: black;
+  color: var(--font-color);
   text-decoration: none;
 }
 
