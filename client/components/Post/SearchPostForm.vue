@@ -23,6 +23,11 @@ form {
   align-items: center;
 }
 
+input {
+  background-color: var(--darker-bg);
+  color: var(--font-color);
+}
+
 legend {
   color: var(--font-color);
 }
