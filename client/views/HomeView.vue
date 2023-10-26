@@ -41,6 +41,10 @@ h1 {
 }
 
 .right {
-  width: calc(25% - 20px);
+  width: calc(25% - 30px - 2em);
+  background-color: var(--base-bg);
+  border-radius: 1em;
+  margin-top: 20px;
+  padding: 1em;
 }
 </style>
