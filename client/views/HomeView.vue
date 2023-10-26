@@ -9,17 +9,19 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 
 <template>
   <main>
-    <div class="split left">
-      <PostListComponent />
-    </div>
-    <div class="split right">
-      <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
+    <div class="split-wrapper">
+      <div class="split left">
+        <PostListComponent />
+      </div>
+      <div class="split right">
+        <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
+      </div>
     </div>
   </main>
 </template>
 
 <style scoped>
-main {
+.split-wrapper {
   display: flex;
 }
 
