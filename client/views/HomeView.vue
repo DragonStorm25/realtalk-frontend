@@ -32,7 +32,7 @@ h1 {
 
 /* Control the left side */
 .left {
-  width: 70%;
+  width: 75%;
 }
 
 /* Control the right side */
@@ -41,6 +41,6 @@ h1 {
 }
 
 .right {
-  width: 20%;
+  width: calc(25% - 20px);
 }
 </style>
