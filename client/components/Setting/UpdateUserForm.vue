@@ -38,3 +38,21 @@ async function updatePassword() {
     </fieldset>
   </form>
 </template>
+
+<style scoped>
+form {
+  display: flex;
+  gap: 0.5em;
+  padding: 1em;
+  align-items: center;
+}
+
+input {
+  background-color: var(--darker-bg);
+  color: var(--font-color);
+}
+
+legend {
+  color: var(--font-color);
+}
+</style>
