@@ -8,7 +8,7 @@ const { currentFriends } = storeToRefs(useUserStore());
 
 const emit = defineEmits(["refreshFriends"]);
 
-const props = defineProps(["from", "to", "outgoing"]);
+const props = defineProps(["from", "to", "outgoing", "isFriendOverride"]);
 
 let requested = ref(false);
 let isFriend = ref(false);
@@ -63,7 +63,11 @@ async function rejectRequest() {
 }
 
 onBeforeMount(async () => {
-  isFriend.value = checkFriend();
+  if (props.isFriendOverride) {
+    isFriend.value = props.isFriendOverride;
+  } else {
+    isFriend.value = checkFriend();
+  }
 });
 </script>
 
