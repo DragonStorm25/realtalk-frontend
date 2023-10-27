@@ -27,6 +27,7 @@ onBeforeMount(async () => {
 <template>
   <div class="list-wrapper">
     <section class="friends" v-if="loaded && friends.length !== 0">
+      <p>Friends</p>
       <article v-for="friend in friends" :key="friend._id">
         <FriendComponent :username="friend" />
       </article>
@@ -54,12 +55,12 @@ p,
   max-width: 65em;
 }
 
-article {
+section {
   background-color: var(--base-bg);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0em;
   padding: 1em;
 }
 
