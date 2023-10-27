@@ -12,9 +12,12 @@ export const useUserStore = defineStore(
 
     const currentKarma = ref(0);
 
+    const currentFriends = ref([]);
+
     const resetStore = () => {
       currentUsername.value = "";
       currentKarma.value = 0;
+      currentFriends.value = [];
     };
 
     const createUser = async (username: string, password: string) => {
@@ -35,9 +38,12 @@ export const useUserStore = defineStore(
         currentUsername.value = username;
         const karma = await fetchy(`/api/users/${username}/karma`, "GET");
         currentKarma.value = karma;
+        const friends = await fetchy("/api/friends", "GET");
+        currentFriends.value = friends;
       } catch {
         currentUsername.value = "";
         currentKarma.value = 0;
+        currentFriends.value = [];
       }
     };
 
@@ -59,6 +65,7 @@ export const useUserStore = defineStore(
       currentUsername,
       isLoggedIn,
       currentKarma,
+      currentFriends,
       createUser,
       loginUser,
       updateSession,
