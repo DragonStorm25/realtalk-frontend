@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PostListComponent from "../components/Post/PostListComponent.vue";
+import FriendOptionComponent from "../components/Friend/FriendOptionComponent.vue";
 import { fetchy } from "../utils/fetchy";
 import { onBeforeMount, onUpdated, ref } from "vue";
 
@@ -31,6 +32,7 @@ onUpdated(async () => {
     <div class="profile-wrapper">
       <p class="username">{{ props.username }}</p>
       <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
+      <FriendOptionComponent />
     </div>
     <h2>Posts by {{ props.username }}</h2>
     <PostListComponent :isFullView="false" :startingFilter="props.username" />
