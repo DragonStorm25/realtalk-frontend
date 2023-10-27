@@ -32,7 +32,7 @@ defineExpose({ getFriends });
     <section class="friends" v-if="loaded && friends.length !== 0">
       <p>Friends</p>
       <article v-for="friend in friends" :key="friend._id">
-        <UserComponent :overrideUsername="friend" />
+        <UserComponent style="width: 60%" :overrideUsername="friend" />
         <FriendOptionComponent :from="props.username" :to="friend" :isFriendOverride="true" @refreshFriends="getFriends" />
       </article>
     </section>
@@ -42,6 +42,10 @@ defineExpose({ getFriends });
 </template>
 
 <style scoped>
+article {
+  display: flex;
+}
+
 .list-wrapper {
   margin-top: 1em;
 }
@@ -49,7 +53,6 @@ defineExpose({ getFriends });
 section {
   display: flex;
   flex-direction: column;
-  gap: 1em;
 }
 
 section,
@@ -65,7 +68,6 @@ section {
   display: flex;
   flex-direction: column;
   gap: 0em;
-  padding: 1em;
 }
 
 .row {
@@ -78,6 +80,6 @@ section {
 p {
   background-color: var(--base-bg);
   border-radius: 1em;
-  padding: 1em;
+  padding-top: 1em;
 }
 </style>
