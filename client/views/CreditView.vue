@@ -1,7 +1,5 @@
 <template>
-  <main class="credits">
-    <a href="https://www.vecteezy.com/free-vector/like-dislike">Like Dislike Vectors by Vecteezy</a>
-  </main>
+  <main class="credits"></main>
 </template>
 
 <style scoped>
