@@ -44,4 +44,15 @@ h3 {
 label {
   color: var(--font-color);
 }
+
+form {
+  gap: 0.5em;
+  padding: 1em;
+  align-items: center;
+}
+
+input {
+  background-color: var(--darker-bg);
+  color: var(--font-color);
+}
 </style>
