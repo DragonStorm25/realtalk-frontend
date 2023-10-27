@@ -2,8 +2,10 @@
 import FriendComponent from "./FriendComponent.vue";
 import { fetchy } from "@/utils/fetchy";
 import { onBeforeMount, ref } from "vue";
+import { useUserStore } from "@/stores/user";
+import { storeToRefs } from "pinia";
 
-const props = defineProps(["username"]);
+const { currentUsername } = storeToRefs(useUserStore());
 
 const loaded = ref(false);
 let requests = ref();
@@ -28,7 +30,7 @@ onBeforeMount(async () => {
   <div class="list-wrapper">
     <section class="request" v-if="loaded && requests.length !== 0">
       <article v-for="request in requests" :key="request._id">
-        <FriendComponent />
+        <FriendComponent v-if="request.from != currentUsername && request.status == `pending`" :username="request.from" />
       </article>
     </section>
     <p v-else-if="loaded">No pending friend requests</p>
