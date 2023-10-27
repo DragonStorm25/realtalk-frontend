@@ -32,7 +32,7 @@ onUpdated(async () => {
     <div class="profile-wrapper">
       <p class="username">{{ props.username }}</p>
       <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
-      <FriendOptionComponent />
+      <FriendOptionComponent :target="$props.username" />
     </div>
     <h2>Posts by {{ props.username }}</h2>
     <PostListComponent :isFullView="false" :startingFilter="props.username" />
