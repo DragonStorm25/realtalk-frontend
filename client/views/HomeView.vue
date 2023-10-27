@@ -17,8 +17,8 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
       </div>
       <div class="split right">
         <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
-        <FriendListComponent />
-        <PendingFriendListComponent />
+        <FriendListComponent v-if="isLoggedIn" />
+        <PendingFriendListComponent v-if="isLoggedIn" />
       </div>
     </div>
   </main>
