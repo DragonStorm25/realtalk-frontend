@@ -28,7 +28,7 @@ onBeforeMount(async () => {
   <div class="list-wrapper">
     <section class="friends" v-if="loaded && friends.length !== 0">
       <article v-for="friend in friends" :key="friend._id">
-        <FriendComponent />
+        <FriendComponent :username="friend" />
       </article>
     </section>
     <p v-else-if="loaded">No friends</p>
