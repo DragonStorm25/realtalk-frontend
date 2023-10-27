@@ -9,6 +9,8 @@ const { currentUsername } = storeToRefs(useUserStore());
 
 const loaded = ref(false);
 let requests = ref();
+let outgoing = ref();
+let pending = ref();
 
 async function getFriendRequests() {
   let requestResults;
@@ -18,6 +20,9 @@ async function getFriendRequests() {
     return;
   }
   requests.value = requestResults;
+  outgoing.value = requestResults.filter((request) => request.from == currentUsername.value && request.status == "pending");
+  console.log(outgoing.value);
+  console.log(requestResults);
 }
 
 onBeforeMount(async () => {
@@ -34,6 +39,16 @@ onBeforeMount(async () => {
       </article>
     </section>
     <p v-else-if="loaded">No pending friend requests</p>
+    <p v-else>Loading...</p>
+  </div>
+  <div class="list-wrapper">
+    <section class="request" v-if="loaded && outgoing.length !== 0">
+      <p>Outgoing Friend Requests</p>
+      <article v-for="request in outgoing" :key="request._id">
+        <FriendComponent :username="request.to" />
+      </article>
+    </section>
+    <p v-else-if="loaded">No outgoing friend requests</p>
     <p v-else>Loading...</p>
   </div>
 </template>
@@ -56,12 +71,12 @@ p,
   max-width: 65em;
 }
 
-article {
+section {
   background-color: var(--base-bg);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0em;
   padding: 1em;
 }
 
