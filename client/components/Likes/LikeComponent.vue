@@ -52,8 +52,14 @@ onBeforeMount(async () => {
 
 <template>
   <div class="likes-box">
-    <button class="pure-button" @click="likeTarget">{{ likes.likes }} &#128077;</button>
-    <button class="pure-button" @click="dislikeTarget">{{ likes.dislikes }} &#128078;</button>
+    <div class="tooltip">
+      <button class="pure-button" @click="likeTarget">{{ likes.likes }} &#128077;</button>
+      <span class="tooltiptext">Likes</span>
+    </div>
+    <div class="tooltip">
+      <button class="pure-button" @click="dislikeTarget">{{ likes.dislikes }} &#128078;</button>
+      <span class="tooltiptext">Dislikes</span>
+    </div>
   </div>
 </template>
 
@@ -69,5 +75,30 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 </style>
