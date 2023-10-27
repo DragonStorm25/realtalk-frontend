@@ -5,7 +5,7 @@ import PostComponent from "@/components/Post/PostComponent.vue";
 import { useUserStore } from "@/stores/user";
 import { fetchy } from "@/utils/fetchy";
 import { storeToRefs } from "pinia";
-import { onBeforeMount, onUpdated, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import SearchPostForm from "./SearchPostForm.vue";
 
 const { isLoggedIn } = storeToRefs(useUserStore());
@@ -40,14 +40,6 @@ onBeforeMount(async () => {
     await getPosts();
   }
   loaded.value = true;
-});
-
-onUpdated(async () => {
-  if (props.startingFilter) {
-    await getPosts(props.startingFilter);
-  } else {
-    await getPosts();
-  }
 });
 </script>
 
