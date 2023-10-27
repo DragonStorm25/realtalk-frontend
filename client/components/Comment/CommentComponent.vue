@@ -7,7 +7,7 @@ import { storeToRefs } from "pinia";
 import { fetchy } from "../../utils/fetchy";
 
 const props = defineProps(["comment"]);
-const emit = defineEmits(["editComment", "refreshComments"]);
+const emit = defineEmits(["editComment", "refreshComments", "refreshPosts"]);
 
 const { currentUsername } = storeToRefs(useUserStore());
 
@@ -23,7 +23,7 @@ const deleteComment = async () => {
 
 <template>
   <div class="comment-box">
-    <RouterLink :to="{ name: 'Profile', params: { username: props.comment.author } }" class="author"> {{ props.comment.author }} </RouterLink>
+    <RouterLink @click="emit('refreshPosts', props.comment.author)" :to="{ name: 'Profile', params: { username: props.comment.author } }" class="author"> {{ props.comment.author }} </RouterLink>
     <p class="content">{{ props.comment.content }}</p>
     <article class="timestamp">
       <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>

@@ -11,6 +11,8 @@ const { isLoggedIn } = storeToRefs(useUserStore());
 
 const props = defineProps(["target", "toggleOpen"]);
 
+const emit = defineEmits(["refreshPosts"]);
+
 const loaded = ref(false);
 let comments = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
@@ -41,7 +43,7 @@ onBeforeMount(async () => {
   </section>
   <section class="comments" v-if="loaded && comments.length !== 0">
     <article v-for="comment in comments" :key="comment._id">
-      <CommentComponent v-if="editing !== comment._id" :comment="comment" @refreshComments="getComments" @editComment="updateEditing" />
+      <CommentComponent v-if="editing !== comment._id" :comment="comment" @refreshComments="getComments" @editComment="updateEditing" @refreshPosts="(author) => emit('refreshPosts', author)" />
       <EditCommentForm v-else :comment="comment" @refreshComments="getComments" @editComment="updateEditing" />
     </article>
   </section>

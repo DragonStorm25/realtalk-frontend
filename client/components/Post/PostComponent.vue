@@ -30,7 +30,7 @@ function toggleCommentCreate() {
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'Profile', params: { username: props.post.author } }" class="author"> {{ props.post.author }} </RouterLink>
+  <RouterLink @click="emit('refreshPosts', props.post.author)" :to="{ name: 'Profile', params: { username: props.post.author } }" class="author"> {{ props.post.author }} </RouterLink>
   <p class="content">{{ props.post.content }}</p>
   <article class="timestamp">
     <p v-if="props.post.dateCreated !== props.post.dateUpdated">Edited on: {{ formatDate(props.post.dateUpdated) }}</p>
@@ -50,7 +50,7 @@ function toggleCommentCreate() {
     </menu>
   </div>
   <div class="comments">
-    <CommentListComponent :target="$props.post._id" :toggleOpen="createComment" />
+    <CommentListComponent :target="$props.post._id" :toggleOpen="createComment" @refreshPosts="(author) => emit('refreshPosts', author)" />
   </div>
 </template>
 
