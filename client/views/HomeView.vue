@@ -11,7 +11,7 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
   <main>
     <div class="split-wrapper">
       <div class="split left">
-        <PostListComponent />
+        <PostListComponent :isFullView="true" />
       </div>
       <div class="split right">
         <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
