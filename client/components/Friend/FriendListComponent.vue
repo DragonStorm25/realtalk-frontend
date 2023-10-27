@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import FriendComponent from "./FriendComponent.vue";
 import { fetchy } from "@/utils/fetchy";
 import { onBeforeMount, ref } from "vue";
+import UserComponent from "../User/UserComponent.vue";
 
 const props = defineProps(["username"]);
 
@@ -29,7 +29,7 @@ onBeforeMount(async () => {
     <section class="friends" v-if="loaded && friends.length !== 0">
       <p>Friends</p>
       <article v-for="friend in friends" :key="friend._id">
-        <FriendComponent :username="friend" />
+        <UserComponent :overrideUsername="friend" />
       </article>
     </section>
     <p v-else-if="loaded">No friends</p>
