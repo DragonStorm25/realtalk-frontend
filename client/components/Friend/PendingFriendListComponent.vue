@@ -34,6 +34,7 @@ onBeforeMount(async () => {
   <div class="list-wrapper">
     <section class="request" v-if="loaded && pending.length !== 0">
       <article v-for="request in pending" :key="request._id">
+        <p>Pending Friend Requests</p>
         <FriendComponent :username="request.from" />
       </article>
     </section>
