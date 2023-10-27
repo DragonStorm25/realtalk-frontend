@@ -6,18 +6,18 @@ import { onBeforeMount, ref } from "vue";
 
 const { currentFriends } = storeToRefs(useUserStore());
 
-const props = defineProps(["target", "outgoing"]);
+const props = defineProps(["from", "to", "outgoing"]);
 
 let requested = ref(false);
 let isFriend = ref(false);
 
 async function checkFriend() {
-  return currentFriends.value.includes(props.target);
+  return currentFriends.value.includes(props.from);
 }
 
 async function friendRequest() {
   try {
-    await fetchy(`/api/friend/requests/${props.target}`, "POST");
+    await fetchy(`/api/friend/requests/${props.from}`, "POST");
     requested.value = true;
   } catch (_) {
     return;
@@ -26,7 +26,7 @@ async function friendRequest() {
 
 async function cancelRequest() {
   try {
-    await fetchy(`/api/friend/requests/${props.target}`, "DELETE");
+    await fetchy(`/api/friend/requests/${props.from}`, "DELETE");
     requested.value = false;
   } catch (_) {
     return;
@@ -35,7 +35,15 @@ async function cancelRequest() {
 
 async function unfriend() {
   try {
-    await fetchy(`/api/friend/${props.target}`, "DELETE");
+    await fetchy(`/api/friend/${props.from}`, "DELETE");
+  } catch (_) {
+    return;
+  }
+}
+
+async function acceptRequest() {
+  try {
+    await fetchy(`/api/friend/accept/${props.to}`, "PUT");
   } catch (_) {
     return;
   }
@@ -53,8 +61,8 @@ onBeforeMount(async () => {
       <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
     </div>
     <div v-else class="recieve-request">
-      <button class="pure-button">Accept Friend Request</button>
-      <button class="pure-button">Reject Friend Request</button>
+      <button class="pure-button" @click="acceptRequest">Accept</button>
+      <button class="pure-button">Reject</button>
     </div>
     <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
