@@ -23,6 +23,8 @@ onBeforeMount(async () => {
   await getFriends();
   loaded.value = true;
 });
+
+defineExpose({ getFriends });
 </script>
 
 <template>

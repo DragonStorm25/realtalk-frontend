@@ -8,10 +8,17 @@ import UserComponent from "../User/UserComponent.vue";
 
 const { currentUsername } = storeToRefs(useUserStore());
 
+const emit = defineEmits(["refreshFriends"]);
+
 const loaded = ref(false);
 let requests = ref();
 let outgoing = ref();
 let pending = ref();
+
+async function updateFriendRequests() {
+  await getFriendRequests();
+  emit("refreshFriends");
+}
 
 async function getFriendRequests() {
   let requestResults;
@@ -37,7 +44,7 @@ onBeforeMount(async () => {
       <p>Pending Friend Requests</p>
       <article v-for="request in pending" :key="request._id">
         <UserComponent :overrideUsername="request.from" />
-        <FriendOptionComponent :to="request.from" :outgoing="false" @refreshFriends="getFriendRequests" />
+        <FriendOptionComponent :to="request.from" :outgoing="false" @refreshFriends="updateFriendRequests" />
       </article>
     </section>
     <p v-else-if="loaded">No pending friend requests</p>

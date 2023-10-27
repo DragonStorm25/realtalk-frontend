@@ -2,11 +2,18 @@
 import PostListComponent from "@/components/Post/PostListComponent.vue";
 import UserComponent from "@/components/User/UserComponent.vue";
 import FriendListComponent from "@/components/Friend/FriendListComponent.vue";
+import { ref } from "vue";
 import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 import PendingFriendListComponent from "../components/Friend/PendingFriendListComponent.vue";
 
 const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
+
+const friendListRef = ref();
+
+async function updateFriendList() {
+  await friendListRef.value.getFriends();
+}
 </script>
 
 <template>
@@ -17,8 +24,8 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
       </div>
       <div class="split right">
         <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
-        <FriendListComponent v-if="isLoggedIn" />
-        <PendingFriendListComponent v-if="isLoggedIn" />
+        <FriendListComponent v-if="isLoggedIn" ref="friendListRef" />
+        <PendingFriendListComponent v-if="isLoggedIn" @refreshFriends="updateFriendList" />
       </div>
     </div>
   </main>
