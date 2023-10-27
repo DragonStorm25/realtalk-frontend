@@ -6,7 +6,7 @@ import { onBeforeMount, ref } from "vue";
 
 const { currentFriends } = storeToRefs(useUserStore());
 
-const props = defineProps(["target"]);
+const props = defineProps(["target", "outgoing"]);
 
 let requested = ref(false);
 let isFriend = ref(false);
@@ -48,8 +48,10 @@ onBeforeMount(async () => {
 
 <template>
   <div class="friend-box">
-    <button v-if="!isFriend && !requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
-    <button v-if="!isFriend && requested" class="pure-button" @click="cancelRequest">Cancel Request</button>
+    <div v-if="!isFriend && props.outgoing" class="send-request">
+      <button v-if="!requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
+      <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
+    </div>
     <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
 </template>
