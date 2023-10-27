@@ -54,11 +54,11 @@ onBeforeMount(async () => {
   <div class="likes-box">
     <div class="tooltip">
       <button class="pure-button" @click="likeTarget">{{ likes.likes }} &#128077;</button>
-      <span class="tooltiptext">Likes</span>
+      <span class="tooltiptext">Like</span>
     </div>
     <div class="tooltip">
       <button class="pure-button" @click="dislikeTarget">{{ likes.dislikes }} &#128078;</button>
-      <span class="tooltiptext">Dislikes</span>
+      <span class="tooltiptext">Dislike</span>
     </div>
   </div>
 </template>
