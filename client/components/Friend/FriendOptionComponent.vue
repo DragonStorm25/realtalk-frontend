@@ -23,7 +23,7 @@ async function checkRequested() {
   try {
     const requests = await fetchy(`/api/friend/requests`, "GET");
     for (const request of requests) {
-      if (request.from == props.from) {
+      if (request.from == props.to) {
         requested.value = true;
       }
     }
