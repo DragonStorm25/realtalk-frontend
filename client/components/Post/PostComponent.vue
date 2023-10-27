@@ -38,9 +38,11 @@ function toggleCommentCreate() {
   </article>
   <div class="base upper-border">
     <div class="base">
-      <LikeComponent :target_id="props.post._id" target_type="post" />
       <TrustComponent :target_id="props.post._id" target_type="post" />
       <CreateCommentToggle @toggle-comment-create="toggleCommentCreate" />
+      <div class="likes">
+        <LikeComponent :target_id="props.post._id" target_type="post" />
+      </div>
     </div>
     <menu v-if="props.post.author == currentUsername">
       <li><button class="btn-small pure-button" @click="emit('editPost', props.post._id)">Edit</button></li>
@@ -86,6 +88,7 @@ menu {
 }
 
 .base {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,28 +103,7 @@ menu {
   margin-left: auto;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-}
-
-/* Tooltip text */
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-  /* Position the tooltip text - see examples below! */
-  position: absolute;
-  z-index: 1;
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.likes {
+  float: right;
 }
 </style>

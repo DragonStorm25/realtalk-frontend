@@ -31,8 +31,10 @@ const deleteComment = async () => {
     </article>
     <div class="base upper-border">
       <div class="base">
-        <LikeComponent :target_id="props.comment._id" target_type="comment" />
         <TrustComponent :target_id="props.comment._id" target_type="comment" />
+        <div class="likes">
+          <LikeComponent :target_id="props.comment._id" target_type="post" />
+        </div>
       </div>
       <menu v-if="props.comment.author == currentUsername">
         <li><button class="btn-small pure-button" @click="emit('editComment', props.comment._id)">Edit</button></li>
@@ -75,6 +77,7 @@ menu {
 }
 
 .base {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,5 +90,9 @@ menu {
 
 .base article:only-child {
   margin-left: auto;
+}
+
+.likes {
+  float: right;
 }
 </style>
