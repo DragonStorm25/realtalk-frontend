@@ -6,6 +6,8 @@ import { onBeforeMount, ref } from "vue";
 
 const { currentFriends } = storeToRefs(useUserStore());
 
+const emit = defineEmits(["refreshFriends"]);
+
 const props = defineProps(["from", "to", "outgoing"]);
 
 let requested = ref(false);
@@ -39,6 +41,7 @@ async function unfriend() {
   } catch (_) {
     return;
   }
+  emit("refreshFriends");
 }
 
 async function acceptRequest() {
@@ -47,6 +50,7 @@ async function acceptRequest() {
   } catch (_) {
     return;
   }
+  emit("refreshFriends");
 }
 
 async function rejectRequest() {
@@ -55,6 +59,7 @@ async function rejectRequest() {
   } catch (_) {
     return;
   }
+  emit("refreshFriends");
 }
 
 onBeforeMount(async () => {
