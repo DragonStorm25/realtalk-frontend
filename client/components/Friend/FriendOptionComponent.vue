@@ -12,9 +12,24 @@ const props = defineProps(["from", "to", "outgoing", "isFriendOverride"]);
 
 let requested = ref(false);
 let isFriend = ref(false);
+let selfFriend = ref(false);
 
 function checkFriend() {
+  selfFriend.value = props.from == props.to;
   return currentFriends.value.includes(props.to);
+}
+
+async function checkRequested() {
+  try {
+    const requests = await fetchy(`/api/friend/requests`, "GET");
+    for (const request of requests) {
+      if (request.from == props.from) {
+        requested.value = true;
+      }
+    }
+  } catch (_) {
+    return;
+  }
 }
 
 async function friendRequest() {
@@ -68,20 +83,23 @@ onBeforeMount(async () => {
   } else {
     isFriend.value = checkFriend();
   }
+  await checkRequested();
 });
 </script>
 
 <template>
   <div class="friend-box">
-    <div v-if="!isFriend && props.outgoing" class="send-request">
-      <button v-if="!requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
-      <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
+    <div v-if="!selfFriend">
+      <div v-if="!isFriend && props.outgoing" class="send-request">
+        <button v-if="!requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
+        <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
+      </div>
+      <div v-else-if="!isFriend" class="recieve-request">
+        <button class="pure-button" @click="acceptRequest">Accept</button>
+        <button class="pure-button" @click="rejectRequest">Reject</button>
+      </div>
+      <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
     </div>
-    <div v-else-if="!isFriend" class="recieve-request">
-      <button class="pure-button" @click="acceptRequest">Accept</button>
-      <button class="pure-button" @click="rejectRequest">Reject</button>
-    </div>
-    <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
 </template>
 

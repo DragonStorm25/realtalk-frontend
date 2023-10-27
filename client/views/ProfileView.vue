@@ -6,7 +6,7 @@ import { storeToRefs } from "pinia";
 import { fetchy } from "../utils/fetchy";
 import { onBeforeMount, onUpdated, ref } from "vue";
 
-const { isLoggedIn } = storeToRefs(useUserStore());
+const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 
 const props = defineProps(["username"]);
 
@@ -36,7 +36,7 @@ onUpdated(async () => {
     <div class="profile-wrapper">
       <p class="username">{{ props.username }}</p>
       <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
-      <FriendOptionComponent v-if="isLoggedIn" :from="$props.username" :outgoing="true" />
+      <FriendOptionComponent v-if="isLoggedIn" :from="$props.username" :to="currentUsername" :outgoing="true" />
     </div>
     <h2>Posts by {{ props.username }}</h2>
     <PostListComponent :isFullView="false" :startingFilter="props.username" />
