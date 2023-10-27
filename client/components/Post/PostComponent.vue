@@ -30,6 +30,7 @@ function toggleCommentCreate() {
 </script>
 
 <template>
+  <RouterLink :to="{ name: 'Profile', params: { username: props.post.author } }"> {{ props.post.author }} </RouterLink>
   <p class="author">{{ props.post.author }}</p>
   <p class="content">{{ props.post.content }}</p>
   <article class="timestamp">
