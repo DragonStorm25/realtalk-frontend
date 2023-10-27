@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import FriendComponent from "./FriendComponent.vue";
+import { useUserStore } from "@/stores/user";
+import { fetchy } from "@/utils/fetchy";
+import { storeToRefs } from "pinia";
+import { onBeforeMount, ref } from "vue";
+
+const props = defineProps(["username"]);
+
+const loaded = ref(false);
+let friends = ref();
+let editing = ref("");
+
+async function getFriends() {
+  let friendResults;
+  try {
+    friendResults = await fetchy(`/api/friends`, "GET");
+  } catch (_) {
+    return;
+  }
+  friends.value = friendResults;
+}
+
+function updateEditing(id: string) {
+  editing.value = id;
+}
+
+onBeforeMount(async () => {
+  await getFriends();
+  loaded.value = true;
+});
+</script>
+
+<template>
+  <section class="comments" v-if="loaded && friends.length !== 0">
+    <article v-for="friend in friends" :key="friend._id">
+      <FriendComponent />
+    </article>
+  </section>
+  <p v-else-if="loaded">No friends</p>
+  <p v-else>Loading...</p>
+</template>
+
+<style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+section,
+p,
+.row {
+  margin: 0 auto;
+  max-width: 65em;
+}
+
+article {
+  background-color: var(--base-bg);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 65em;
+}
+</style>
