@@ -52,6 +52,10 @@ onBeforeMount(async () => {
       <button v-if="!requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
       <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
     </div>
+    <div v-else class="recieve-request">
+      <button class="pure-button">Accept Friend Request</button>
+      <button class="pure-button">Reject Friend Request</button>
+    </div>
     <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
 </template>
