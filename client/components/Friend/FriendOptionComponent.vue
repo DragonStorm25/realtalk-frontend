@@ -7,7 +7,6 @@ import { onBeforeMount, ref } from "vue";
 const { currentFriends } = storeToRefs(useUserStore());
 
 const props = defineProps(["target"]);
-let likes = ref({ likes: 0, dislikes: 0 });
 
 let requested = ref(false);
 let isFriend = ref(false);
