@@ -33,7 +33,7 @@ const deleteComment = async () => {
       <div class="base">
         <TrustComponent :target_id="props.comment._id" target_type="comment" />
         <div class="likes">
-          <LikeComponent :target_id="props.comment._id" target_type="post" />
+          <LikeComponent :target_id="props.comment._id" target_type="comment" />
         </div>
       </div>
       <menu v-if="props.comment.author == currentUsername">
