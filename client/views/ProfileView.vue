@@ -23,14 +23,26 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="profile-wrapper">
-    <p class="username">{{ props.username }}</p>
-    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
+  <div class="full-wrapper">
+    <div class="profile-wrapper">
+      <p class="username">{{ props.username }}</p>
+      <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
+    </div>
+    <h2>Posts by {{ props.username }}</h2>
+    <PostListComponent :isFullView="false" :startingFilter="props.username" />
   </div>
-  <PostListComponent :isFullView="false" :startingFilter="props.username" />
 </template>
 
 <style scoped>
+.full-wrapper {
+  background: var(--darker-bg);
+}
+
+h2 {
+  color: var(--font-color);
+  margin-left: 1em;
+}
+
 .username {
   font-weight: bold;
   font-size: 1.2em;
