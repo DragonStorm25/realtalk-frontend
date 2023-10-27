@@ -25,7 +25,7 @@ onBeforeMount(async () => {
 <template>
   <div class="profile-wrapper">
     <p class="username">{{ props.username }}</p>
-    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} realness</p>
+    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ Math.abs(karma) }} realness</p>
   </div>
   <PostListComponent :isFullView="false" :startingFilter="props.username" />
 </template>
