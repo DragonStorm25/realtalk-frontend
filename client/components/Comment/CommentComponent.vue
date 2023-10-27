@@ -25,6 +25,10 @@ const deleteComment = async () => {
   <div class="comment-box">
     <p class="author">{{ props.comment.author }}</p>
     <p class="content">{{ props.comment.content }}</p>
+    <article class="timestamp">
+      <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
+      <p v-else>Created on: {{ formatDate(props.comment.dateCreated) }}</p>
+    </article>
     <div class="base upper-border">
       <div class="base">
         <LikeComponent :target_id="props.comment._id" target_type="comment" />
@@ -34,10 +38,6 @@ const deleteComment = async () => {
         <li><button class="btn-small pure-button" @click="emit('editComment', props.comment._id)">Edit</button></li>
         <li><button class="button-error btn-small pure-button" @click="deleteComment">Delete</button></li>
       </menu>
-      <article class="timestamp">
-        <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
-        <p v-else>Created on: {{ formatDate(props.comment.dateCreated) }}</p>
-      </article>
     </div>
   </div>
 </template>

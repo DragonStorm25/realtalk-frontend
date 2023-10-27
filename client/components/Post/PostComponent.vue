@@ -32,6 +32,10 @@ function toggleCommentCreate() {
 <template>
   <p class="author">{{ props.post.author }}</p>
   <p class="content">{{ props.post.content }}</p>
+  <article class="timestamp">
+    <p v-if="props.post.dateCreated !== props.post.dateUpdated">Edited on: {{ formatDate(props.post.dateUpdated) }}</p>
+    <p v-else>Created on: {{ formatDate(props.post.dateCreated) }}</p>
+  </article>
   <div class="base upper-border">
     <div class="base">
       <LikeComponent :target_id="props.post._id" target_type="post" />
@@ -42,10 +46,6 @@ function toggleCommentCreate() {
       <li><button class="btn-small pure-button" @click="emit('editPost', props.post._id)">Edit</button></li>
       <li><button class="button-error btn-small pure-button" @click="deletePost">Delete</button></li>
     </menu>
-    <article class="timestamp">
-      <p v-if="props.post.dateCreated !== props.post.dateUpdated">Edited on: {{ formatDate(props.post.dateUpdated) }}</p>
-      <p v-else>Created on: {{ formatDate(props.post.dateCreated) }}</p>
-    </article>
   </div>
   <div class="comments">
     <CommentListComponent :target="$props.post._id" :toggleOpen="createComment" />
@@ -98,5 +98,30 @@ menu {
 
 .base article:only-child {
   margin-left: auto;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 </style>
