@@ -20,8 +20,8 @@ async function getFriendRequests() {
     return;
   }
   requests.value = requestResults;
-  outgoing.value = requestResults.filter((request) => request.from == currentUsername.value && request.status == "pending");
-  pending.value = requestResults.filter((request) => request.to == currentUsername.value && request.status == "pending");
+  outgoing.value = requestResults.filter((request: { from: string; status: string }) => request.from == currentUsername.value && request.status == "pending");
+  pending.value = requestResults.filter((request: { to: string; status: string }) => request.to == currentUsername.value && request.status == "pending");
 }
 
 onBeforeMount(async () => {
