@@ -49,6 +49,14 @@ async function acceptRequest() {
   }
 }
 
+async function rejectRequest() {
+  try {
+    await fetchy(`/api/friend/reject/${props.to}`, "PUT");
+  } catch (_) {
+    return;
+  }
+}
+
 onBeforeMount(async () => {
   isFriend.value = await checkFriend();
 });
@@ -62,7 +70,7 @@ onBeforeMount(async () => {
     </div>
     <div v-else-if="!isFriend" class="recieve-request">
       <button class="pure-button" @click="acceptRequest">Accept</button>
-      <button class="pure-button">Reject</button>
+      <button class="pure-button" @click="rejectRequest">Reject</button>
     </div>
     <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
