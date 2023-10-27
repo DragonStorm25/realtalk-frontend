@@ -32,6 +32,10 @@ export default class PostConcept {
     return await this.getPosts({ author });
   }
 
+  async getByContent(content: string) {
+    return await this.getPosts({ content });
+  }
+
   async update(_id: ObjectId, update: Partial<PostDoc>) {
     this.sanitizeUpdate(update);
     await this.posts.updateOne({ _id }, update);
