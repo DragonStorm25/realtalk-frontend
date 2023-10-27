@@ -10,6 +10,7 @@ const props = defineProps(["target"]);
 let likes = ref({ likes: 0, dislikes: 0 });
 
 let requested = ref(false);
+let isFriend = ref(false);
 
 async function checkFriend() {
   return currentFriends.value.includes(props.target);
@@ -40,12 +41,16 @@ async function unfriend() {
     return;
   }
 }
+
+onBeforeMount(async () => {
+  isFriend.value = checkFriend();
+});
 </script>
 
 <template>
   <div class="friend-box">
-    <button v-if="!checkFriend() && !requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
-    <button v-if="!checkFriend() && requested" class="pure-button" @click="cancelRequest">Cancel Request</button>
+    <button class="pure-button" @click="friendRequest">Send Friend Request</button>
+    <button v-if="!isFriend && requested" class="pure-button" @click="cancelRequest">Cancel Request</button>
   </div>
 </template>
 
