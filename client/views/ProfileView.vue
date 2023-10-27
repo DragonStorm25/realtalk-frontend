@@ -36,6 +36,7 @@ onBeforeMount(async () => {
 <style scoped>
 .full-wrapper {
   background: var(--darker-bg);
+  padding: 2em;
 }
 
 h2 {
