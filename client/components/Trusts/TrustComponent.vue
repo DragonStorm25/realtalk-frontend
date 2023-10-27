@@ -85,8 +85,8 @@ button {
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: black;
-  color: #fff;
+  background-color: var(--darker-bg);
+  color: var(--font-color);
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
