@@ -95,7 +95,7 @@ button {
   width: 120px;
   bottom: 100%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -70px;
 }
 
 .tooltip:hover .tooltiptext {
