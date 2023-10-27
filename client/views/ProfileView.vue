@@ -15,6 +15,10 @@ async function getKarma() {
   }
   karma.value = karmaResults;
 }
+
+onBeforeMount(async () => {
+  await getKarma();
+});
 </script>
 
 <template>
