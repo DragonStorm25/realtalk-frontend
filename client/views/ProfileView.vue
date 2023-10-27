@@ -23,13 +23,8 @@ onBeforeMount(async () => {
 
 <template>
   <div class="profile-wrapper">
-    <div v-if="isLoggedIn" class="logged-in">
-      <p class="username">{{ currentUsername }}</p>
-      <p class="karma">{{ currentKarma > 0 ? "+" : currentKarma < 0 ? "-" : "" }}{{ currentKarma }} realness</p>
-    </div>
-    <div v-else>
-      <p class="username logged-out">Not logged in!</p>
-    </div>
+    <p class="username">{{ props.username }}</p>
+    <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} realness</p>
   </div>
 </template>
 
