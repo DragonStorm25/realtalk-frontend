@@ -27,7 +27,7 @@ onBeforeMount(async () => {
     <p class="username">{{ props.username }}</p>
     <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} realness</p>
   </div>
-  <PostListComponent />
+  <PostListComponent :isFullView="false" />
 </template>
 
 <style scoped>
