@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PostListComponent from "../components/Post/PostListComponent.vue";
 import { fetchy } from "../utils/fetchy";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, onUpdated, ref } from "vue";
 
 const props = defineProps(["username"]);
 
@@ -18,6 +18,10 @@ async function getKarma() {
 }
 
 onBeforeMount(async () => {
+  await getKarma();
+});
+
+onUpdated(async () => {
   await getKarma();
 });
 </script>
