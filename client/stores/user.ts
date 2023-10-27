@@ -12,7 +12,7 @@ export const useUserStore = defineStore(
 
     const currentKarma = ref(0);
 
-    const currentFriends = ref([]);
+    const currentFriends = ref(new Array<string>());
 
     const resetStore = () => {
       currentUsername.value = "";
