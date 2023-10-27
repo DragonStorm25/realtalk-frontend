@@ -52,8 +52,8 @@ onBeforeMount(async () => {
 
 <template>
   <div class="likes-box">
-    <button class="pure-button" @click="likeTarget">Likes: {{ likes.likes }}</button>
-    <button class="pure-button" @click="dislikeTarget">Dislikes: {{ likes.dislikes }}</button>
+    <button class="pure-button" @click="likeTarget">&#128077; {{ likes.likes }}</button>
+    <button class="pure-button" @click="dislikeTarget">&#128078; {{ likes.dislikes }}</button>
   </div>
 </template>
 
