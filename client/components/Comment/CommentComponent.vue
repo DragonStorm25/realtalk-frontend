@@ -23,7 +23,7 @@ const deleteComment = async () => {
 
 <template>
   <div class="comment-box">
-    <p class="author">{{ props.comment.author }}</p>
+    <RouterLink :to="{ name: 'Profile', params: { username: props.comment.author } }" class="author"> {{ props.comment.author }} </RouterLink>
     <p class="content">{{ props.comment.content }}</p>
     <article class="timestamp">
       <p v-if="props.comment.dateCreated !== props.comment.dateUpdated">Edited on: {{ formatDate(props.comment.dateUpdated) }}</p>
@@ -54,6 +54,18 @@ p {
   font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-color: var(--underline-color);
+}
+
+.author:link {
+  color: var(--font-color);
+}
+
+.author:visited {
+  color: var(--font-color);
+}
+
+.author:hover {
+  color: var(--underline-color);
 }
 
 .content {
