@@ -12,7 +12,7 @@ let requested = ref(false);
 let isFriend = ref(false);
 
 async function checkFriend() {
-  return currentFriends.value.includes(props.from);
+  return currentFriends.value.includes(props.to);
 }
 
 async function friendRequest() {
@@ -35,7 +35,7 @@ async function cancelRequest() {
 
 async function unfriend() {
   try {
-    await fetchy(`/api/friend/${props.from}`, "DELETE");
+    await fetchy(`/api/friends/${props.to}`, "DELETE");
   } catch (_) {
     return;
   }
@@ -60,7 +60,7 @@ onBeforeMount(async () => {
       <button v-if="!requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
       <button v-else class="pure-button" @click="cancelRequest">Cancel Request</button>
     </div>
-    <div v-else class="recieve-request">
+    <div v-else-if="!isFriend" class="recieve-request">
       <button class="pure-button" @click="acceptRequest">Accept</button>
       <button class="pure-button">Reject</button>
     </div>
