@@ -52,8 +52,8 @@ onBeforeMount(async () => {
 
 <template>
   <div class="trusts-box">
-    <button class="pure-button" @click="trustPost">Trusts: {{ trusts.trusts }}</button>
-    <button class="pure-button" @click="mistrustPost">Mistrusts: {{ trusts.mistrusts }}</button>
+    <button class="pure-button" @click="trustPost">&#129309; {{ trusts.trusts }}</button>
+    <button class="pure-button" @click="mistrustPost">&#129317; {{ trusts.mistrusts }}</button>
   </div>
 </template>
 
