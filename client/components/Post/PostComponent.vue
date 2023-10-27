@@ -30,8 +30,7 @@ function toggleCommentCreate() {
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'Profile', params: { username: props.post.author } }"> {{ props.post.author }} </RouterLink>
-  <p class="author">{{ props.post.author }}</p>
+  <RouterLink :to="{ name: 'Profile', params: { username: props.post.author } }" class="author"> {{ props.post.author }} </RouterLink>
   <p class="content">{{ props.post.content }}</p>
   <article class="timestamp">
     <p v-if="props.post.dateCreated !== props.post.dateUpdated">Edited on: {{ formatDate(props.post.dateUpdated) }}</p>
@@ -66,6 +65,18 @@ p {
   font-size: 1.2em;
   border-bottom-style: solid;
   border-bottom-color: var(--underline-color);
+}
+
+.author:link {
+  color: var(--font-color);
+}
+
+.author:visited {
+  color: var(--font-color);
+}
+
+.author:hover {
+  color: var(--underline-color);
 }
 
 .content {
