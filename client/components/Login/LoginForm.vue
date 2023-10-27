@@ -35,7 +35,12 @@ async function login() {
 
 <style scoped>
 h3 {
+  color: var(--font-color);
   display: flex;
   justify-content: center;
+}
+
+label {
+  color: var(--font-color);
 }
 </style>
