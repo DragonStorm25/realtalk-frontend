@@ -31,7 +31,7 @@ onBeforeMount(async () => {
         <FriendComponent />
       </article>
     </section>
-    <p v-else-if="loaded">No friends</p>
+    <p v-else-if="loaded">No pending friend requests</p>
     <p v-else>Loading...</p>
   </div>
 </template>
