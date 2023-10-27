@@ -10,6 +10,8 @@ import SearchPostForm from "./SearchPostForm.vue";
 
 const { isLoggedIn } = storeToRefs(useUserStore());
 
+const props = defineProps(["isFullView"]);
+
 const loaded = ref(false);
 let posts = ref<Array<Record<string, string>>>([]);
 let editing = ref("");
@@ -39,11 +41,11 @@ onBeforeMount(async () => {
 
 <template>
   <div class="scroll">
-    <section v-if="isLoggedIn">
+    <section v-if="isLoggedIn && props.isFullView">
       <h2>Create a post:</h2>
       <CreatePostForm @refreshPosts="getPosts" />
     </section>
-    <div class="row">
+    <div class="row" v-if="props.isFullView">
       <h2 v-if="!searchAuthor">Posts</h2>
       <h2 v-else>Posts by {{ searchAuthor }}</h2>
       <SearchPostForm @getPostsByAuthor="getPosts" />
