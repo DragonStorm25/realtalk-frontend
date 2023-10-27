@@ -13,7 +13,7 @@ const props = defineProps(["from", "to", "outgoing"]);
 let requested = ref(false);
 let isFriend = ref(false);
 
-async function checkFriend() {
+function checkFriend() {
   return currentFriends.value.includes(props.to);
 }
 
@@ -63,7 +63,7 @@ async function rejectRequest() {
 }
 
 onBeforeMount(async () => {
-  isFriend.value = await checkFriend();
+  isFriend.value = checkFriend();
 });
 </script>
 
