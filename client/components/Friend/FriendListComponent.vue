@@ -32,16 +32,22 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <section class="comments" v-if="loaded && friends.length !== 0">
-    <article v-for="friend in friends" :key="friend._id">
-      <FriendComponent />
-    </article>
-  </section>
-  <p v-else-if="loaded">No friends</p>
-  <p v-else>Loading...</p>
+  <div class="list-wrapper">
+    <section class="friends" v-if="loaded && friends.length !== 0">
+      <article v-for="friend in friends" :key="friend._id">
+        <FriendComponent />
+      </article>
+    </section>
+    <p v-else-if="loaded">No friends</p>
+    <p v-else>Loading...</p>
+  </div>
 </template>
 
 <style scoped>
+.list-wrapper {
+  margin-top: 1em;
+}
+
 section {
   display: flex;
   flex-direction: column;
@@ -69,5 +75,11 @@ article {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 65em;
+}
+
+p {
+  background-color: var(--base-bg);
+  border-radius: 1em;
+  padding: 1em;
 }
 </style>
