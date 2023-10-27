@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import FriendComponent from "./FriendComponent.vue";
-import { useUserStore } from "@/stores/user";
 import { fetchy } from "@/utils/fetchy";
-import { storeToRefs } from "pinia";
 import { onBeforeMount, ref } from "vue";
 
 const props = defineProps(["username"]);
 
 const loaded = ref(false);
 let friends = ref();
-let editing = ref("");
 
 async function getFriends() {
   let friendResults;
@@ -19,10 +16,6 @@ async function getFriends() {
     return;
   }
   friends.value = friendResults;
-}
-
-function updateEditing(id: string) {
-  editing.value = id;
 }
 
 onBeforeMount(async () => {
