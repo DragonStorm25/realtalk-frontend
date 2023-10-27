@@ -31,7 +31,7 @@ onBeforeMount(async () => {
       <p>Friends</p>
       <article v-for="friend in friends" :key="friend._id">
         <UserComponent :overrideUsername="friend" />
-        <FriendOptionComponent :from="props.username" :to="friend" />
+        <FriendOptionComponent :from="props.username" :to="friend" @refreshFriends="getFriends" />
       </article>
     </section>
     <p v-else-if="loaded">No friends</p>
