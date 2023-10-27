@@ -104,7 +104,7 @@ article {
 .row {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
-  max-width: 60em;
+  margin: 0 3em;
+  max-width: 70em;
 }
 </style>
