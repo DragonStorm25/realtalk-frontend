@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PostListComponent from "../components/Post/PostListComponent.vue";
 import { fetchy } from "../utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 
@@ -26,6 +27,7 @@ onBeforeMount(async () => {
     <p class="username">{{ props.username }}</p>
     <p class="karma">{{ karma > 0 ? "+" : karma < 0 ? "-" : "" }}{{ karma }} realness</p>
   </div>
+  <PostListComponent />
 </template>
 
 <style scoped>
