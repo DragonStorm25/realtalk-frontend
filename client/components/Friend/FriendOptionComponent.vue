@@ -18,6 +18,7 @@ async function checkFriend() {
 async function friendRequest() {
   try {
     await fetchy(`/api/friends/requests/${props.target}`, "POST");
+    requested.value = true;
   } catch (_) {
     return;
   }
@@ -26,6 +27,7 @@ async function friendRequest() {
 async function cancelRequest() {
   try {
     await fetchy(`/api/friends/requests/${props.target}`, "DELETE");
+    requested.value = false;
   } catch (_) {
     return;
   }
@@ -41,9 +43,9 @@ async function unfriend() {
 </script>
 
 <template>
-  <div class="likes-box">
-    <button class="pure-button" @click="friendRequest">Friend</button>
-    <button class="pure-button" @click="dislikeTarget">{{ likes.dislikes }} &#128078;</button>
+  <div class="friend-box">
+    <button v-if="!checkFriend() && !requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
+    <button v-if="!checkFriend() && requested" class="pure-button" @click="cancelRequest">Cancel Request</button>
   </div>
 </template>
 
@@ -55,7 +57,7 @@ button {
   color: var(--font-color);
 }
 
-.likes-box {
+.friend-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
