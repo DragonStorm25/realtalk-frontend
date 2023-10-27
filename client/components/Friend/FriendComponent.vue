@@ -19,6 +19,5 @@ const props = defineProps(["username"]);
 .friend-wrapper {
   background-color: var(--base-bg);
   border-radius: 1em;
-  padding: 1em;
 }
 </style>
