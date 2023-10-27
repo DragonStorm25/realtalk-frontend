@@ -23,6 +23,7 @@ const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 <style scoped>
 .split-wrapper {
   display: flex;
+  min-height: 100vh;
 }
 
 h1 {
