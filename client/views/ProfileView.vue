@@ -41,6 +41,7 @@ onUpdated(async () => {
 .full-wrapper {
   background: var(--darker-bg);
   padding: 2em;
+  min-height: 100vh;
 }
 
 h2 {
