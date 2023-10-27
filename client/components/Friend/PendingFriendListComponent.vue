@@ -33,8 +33,8 @@ onBeforeMount(async () => {
 <template>
   <div class="list-wrapper">
     <section class="request" v-if="loaded && pending.length !== 0">
+      <p>Pending Friend Requests</p>
       <article v-for="request in pending" :key="request._id">
-        <p>Pending Friend Requests</p>
         <FriendComponent :username="request.from" />
       </article>
     </section>
