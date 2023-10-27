@@ -6,7 +6,7 @@ import { useUserStore } from "@/stores/user";
 import { storeToRefs } from "pinia";
 import PendingFriendListComponent from "../components/Friend/PendingFriendListComponent.vue";
 
-const { currentUsername, isLoggedIn, currentFriends } = storeToRefs(useUserStore());
+const { currentUsername, isLoggedIn } = storeToRefs(useUserStore());
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const { currentUsername, isLoggedIn, currentFriends } = storeToRefs(useUserStore
       </div>
       <div class="split right">
         <UserComponent :username="currentUsername" :loggedIn="isLoggedIn" />
-        <FriendListComponent v-if="isLoggedIn" :friends="currentFriends" />
+        <FriendListComponent v-if="isLoggedIn" />
         <PendingFriendListComponent v-if="isLoggedIn" />
       </div>
     </div>

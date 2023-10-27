@@ -1,13 +1,26 @@
 <script setup lang="ts">
+import { fetchy } from "@/utils/fetchy";
 import { onBeforeMount, ref } from "vue";
 import UserComponent from "../User/UserComponent.vue";
 import FriendOptionComponent from "../Friend/FriendOptionComponent.vue";
 
-const props = defineProps(["username", "friends"]);
+const props = defineProps(["username"]);
 
 const loaded = ref(false);
+let friends = ref();
+
+async function getFriends() {
+  let friendResults;
+  try {
+    friendResults = await fetchy(`/api/friends`, "GET");
+  } catch (_) {
+    return;
+  }
+  friends.value = friendResults;
+}
 
 onBeforeMount(async () => {
+  await getFriends();
   loaded.value = true;
 });
 </script>
@@ -18,7 +31,7 @@ onBeforeMount(async () => {
       <p>Friends</p>
       <article v-for="friend in friends" :key="friend._id">
         <UserComponent :overrideUsername="friend" />
-        <FriendOptionComponent :from="props.username" :to="friend" />
+        <FriendOptionComponent :from="props.username" :to="friend" @refreshFriends="getFriends" />
       </article>
     </section>
     <p v-else-if="loaded">No friends</p>
