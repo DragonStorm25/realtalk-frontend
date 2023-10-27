@@ -25,7 +25,7 @@ onBeforeMount(async () => {
   <header>
     <nav>
       <div class="title">
-        <img src="@/assets/images/logo.svg" />
+        <img src="@/assets/images/RealTalk - Logo.png" />
         <RouterLink :to="{ name: 'Home' }">
           <h1>RealTalk</h1>
         </RouterLink>
