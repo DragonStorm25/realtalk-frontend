@@ -18,7 +18,7 @@ async function checkFriend() {
 
 async function friendRequest() {
   try {
-    await fetchy(`/api/friends/requests/${props.target}`, "POST");
+    await fetchy(`/api/friend/requests/${props.target}`, "POST");
     requested.value = true;
   } catch (_) {
     return;
@@ -27,7 +27,7 @@ async function friendRequest() {
 
 async function cancelRequest() {
   try {
-    await fetchy(`/api/friends/requests/${props.target}`, "DELETE");
+    await fetchy(`/api/friend/requests/${props.target}`, "DELETE");
     requested.value = false;
   } catch (_) {
     return;
@@ -36,21 +36,22 @@ async function cancelRequest() {
 
 async function unfriend() {
   try {
-    await fetchy(`/api/friends/${props.target}`, "DELETE");
+    await fetchy(`/api/friend/${props.target}`, "DELETE");
   } catch (_) {
     return;
   }
 }
 
 onBeforeMount(async () => {
-  isFriend.value = checkFriend();
+  isFriend.value = await checkFriend();
 });
 </script>
 
 <template>
   <div class="friend-box">
-    <button class="pure-button" @click="friendRequest">Send Friend Request</button>
+    <button v-if="!isFriend && !requested" class="pure-button" @click="friendRequest">Send Friend Request</button>
     <button v-if="!isFriend && requested" class="pure-button" @click="cancelRequest">Cancel Request</button>
+    <button v-if="isFriend" class="pure-button" @click="unfriend">Unfriend</button>
   </div>
 </template>
 
